@@ -11,7 +11,9 @@ import SwiftUI
 struct WhatAppProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack{
+                ChatRoomScreen()
+            }
         }
     }
 }

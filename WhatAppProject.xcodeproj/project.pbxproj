@@ -6,6 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D0E909052DAEC51D004DAF3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FB2DAEC51D004DAF3B /* Preview Assets.xcassets */; };
+		D0E909062DAEC51D004DAF3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FD2DAEC51D004DAF3B /* Assets.xcassets */; };
+		D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */; };
+		D0E909082DAEC51D004DAF3B /* BubbleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F22DAEC51D004DAF3B /* BubbleImageView.swift */; };
+		D0E909092DAEC51D004DAF3B /* BubbleTailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F32DAEC51D004DAF3B /* BubbleTailView.swift */; };
+		D0E9090A2DAEC51D004DAF3B /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F42DAEC51D004DAF3B /* BubbleTextView.swift */; };
+		D0E9090B2DAEC51D004DAF3B /* TextInputArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F52DAEC51D004DAF3B /* TextInputArea.swift */; };
+		D0E9090C2DAEC51D004DAF3B /* BubbleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F72DAEC51D004DAF3B /* BubbleModifier.swift */; };
+		D0E9090D2DAEC51D004DAF3B /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F92DAEC51D004DAF3B /* MessageItem.swift */; };
+		D0E9090E2DAEC51D004DAF3B /* ChatRoomScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908FE2DAEC51D004DAF3B /* ChatRoomScreen.swift */; };
+		D0E9090F2DAEC51D004DAF3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908FF2DAEC51D004DAF3B /* ContentView.swift */; };
+		D0E909102DAEC51D004DAF3B /* MessageListControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909002DAEC51D004DAF3B /* MessageListControllerViewController.swift */; };
+		D0E909112DAEC51D004DAF3B /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909012DAEC51D004DAF3B /* MessageListView.swift */; };
+		D0E909122DAEC51D004DAF3B /* WhatAppProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909032DAEC51D004DAF3B /* WhatAppProjectApp.swift */; };
+		D0E909152DAEC530004DAF3B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909142DAEC52F004DAF3B /* ChatViewModel.swift */; };
+		D0E9091D2DAEEE6E004DAF3B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9091C2DAEEE6E004DAF3B /* Extension.swift */; };
+		D0E909E92DB169F6004DAF3B /* MediaAttachmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */; };
+		D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D0E908BE2DAEBB2E004DAF3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +48,28 @@
 		D0E908AC2DAEBB2B004DAF3B /* WhatAppProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatAppProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908BD2DAEBB2E004DAF3B /* WhatAppProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908C72DAEBB2E004DAF3B /* WhatAppProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAudioView.swift; sourceTree = "<group>"; };
+		D0E908F22DAEC51D004DAF3B /* BubbleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageView.swift; sourceTree = "<group>"; };
+		D0E908F32DAEC51D004DAF3B /* BubbleTailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTailView.swift; sourceTree = "<group>"; };
+		D0E908F42DAEC51D004DAF3B /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
+		D0E908F52DAEC51D004DAF3B /* TextInputArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputArea.swift; sourceTree = "<group>"; };
+		D0E908F72DAEC51D004DAF3B /* BubbleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleModifier.swift; sourceTree = "<group>"; };
+		D0E908F92DAEC51D004DAF3B /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
+		D0E908FB2DAEC51D004DAF3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0E908FD2DAEC51D004DAF3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0E908FE2DAEC51D004DAF3B /* ChatRoomScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomScreen.swift; sourceTree = "<group>"; };
+		D0E908FF2DAEC51D004DAF3B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D0E909002DAEC51D004DAF3B /* MessageListControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListControllerViewController.swift; sourceTree = "<group>"; };
+		D0E909012DAEC51D004DAF3B /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
+		D0E909022DAEC51D004DAF3B /* WhatAppProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatAppProject.entitlements; sourceTree = "<group>"; };
+		D0E909032DAEC51D004DAF3B /* WhatAppProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectApp.swift; sourceTree = "<group>"; };
+		D0E909142DAEC52F004DAF3B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		D0E9091C2DAEEE6E004DAF3B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAttachmentPreview.swift; sourceTree = "<group>"; };
+		D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D0E908AE2DAEBB2B004DAF3B /* WhatAppProject */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WhatAppProject;
-			sourceTree = "<group>";
-		};
 		D0E908C02DAEBB2E004DAF3B /* WhatAppProjectTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = WhatAppProjectTests;
@@ -75,7 +110,7 @@
 		D0E908A32DAEBB2B004DAF3B = {
 			isa = PBXGroup;
 			children = (
-				D0E908AE2DAEBB2B004DAF3B /* WhatAppProject */,
+				D0E909042DAEC51D004DAF3B /* WhatAppProject */,
 				D0E908C02DAEBB2E004DAF3B /* WhatAppProjectTests */,
 				D0E908CA2DAEBB2E004DAF3B /* WhatAppProjectUITests */,
 				D0E908AD2DAEBB2B004DAF3B /* Products */,
@@ -92,6 +127,88 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D0E908F62DAEC51D004DAF3B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */,
+				D0E908F22DAEC51D004DAF3B /* BubbleImageView.swift */,
+				D0E908F32DAEC51D004DAF3B /* BubbleTailView.swift */,
+				D0E908F42DAEC51D004DAF3B /* BubbleTextView.swift */,
+				D0E908F52DAEC51D004DAF3B /* TextInputArea.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D0E908F82DAEC51D004DAF3B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D0E908F72DAEC51D004DAF3B /* BubbleModifier.swift */,
+				D0E9091C2DAEEE6E004DAF3B /* Extension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D0E908FA2DAEC51D004DAF3B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0E908F92DAEC51D004DAF3B /* MessageItem.swift */,
+				D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0E908FC2DAEC51D004DAF3B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D0E908FB2DAEC51D004DAF3B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D0E909042DAEC51D004DAF3B /* WhatAppProject */ = {
+			isa = PBXGroup;
+			children = (
+				D0E909132DAEC526004DAF3B /* ViewModel */,
+				D0E908F62DAEC51D004DAF3B /* Components */,
+				D0E908F82DAEC51D004DAF3B /* Helpers */,
+				D0E908FA2DAEC51D004DAF3B /* Models */,
+				D0E908FC2DAEC51D004DAF3B /* Preview Content */,
+				D0E908FD2DAEC51D004DAF3B /* Assets.xcassets */,
+				D0E909022DAEC51D004DAF3B /* WhatAppProject.entitlements */,
+				D0E909032DAEC51D004DAF3B /* WhatAppProjectApp.swift */,
+				D0E909E62DB1699D004DAF3B /* Main */,
+			);
+			path = WhatAppProject;
+			sourceTree = "<group>";
+		};
+		D0E909132DAEC526004DAF3B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D0E909142DAEC52F004DAF3B /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D0E909E62DB1699D004DAF3B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D0E909E72DB169D8004DAF3B /* Chat */,
+				D0E908FF2DAEC51D004DAF3B /* ContentView.swift */,
+				D0E909012DAEC51D004DAF3B /* MessageListView.swift */,
+				D0E909002DAEC51D004DAF3B /* MessageListControllerViewController.swift */,
+				D0E908FE2DAEC51D004DAF3B /* ChatRoomScreen.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D0E909E72DB169D8004DAF3B /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +223,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				D0E908AE2DAEBB2B004DAF3B /* WhatAppProject */,
 			);
 			name = WhatAppProject;
 			packageProductDependencies = (
@@ -212,6 +326,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E909052DAEC51D004DAF3B /* Preview Assets.xcassets in Resources */,
+				D0E909062DAEC51D004DAF3B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +352,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E909E92DB169F6004DAF3B /* MediaAttachmentPreview.swift in Sources */,
+				D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */,
+				D0E909082DAEC51D004DAF3B /* BubbleImageView.swift in Sources */,
+				D0E909092DAEC51D004DAF3B /* BubbleTailView.swift in Sources */,
+				D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */,
+				D0E9090A2DAEC51D004DAF3B /* BubbleTextView.swift in Sources */,
+				D0E9090B2DAEC51D004DAF3B /* TextInputArea.swift in Sources */,
+				D0E9090C2DAEC51D004DAF3B /* BubbleModifier.swift in Sources */,
+				D0E9090D2DAEC51D004DAF3B /* MessageItem.swift in Sources */,
+				D0E9090E2DAEC51D004DAF3B /* ChatRoomScreen.swift in Sources */,
+				D0E9090F2DAEC51D004DAF3B /* ContentView.swift in Sources */,
+				D0E9091D2DAEEE6E004DAF3B /* Extension.swift in Sources */,
+				D0E909102DAEC51D004DAF3B /* MessageListControllerViewController.swift in Sources */,
+				D0E909152DAEC530004DAF3B /* ChatViewModel.swift in Sources */,
+				D0E909112DAEC51D004DAF3B /* MessageListView.swift in Sources */,
+				D0E909122DAEC51D004DAF3B /* WhatAppProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,8 +539,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = WhatApp.com.WhatAppProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -432,8 +567,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = WhatApp.com.WhatAppProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
