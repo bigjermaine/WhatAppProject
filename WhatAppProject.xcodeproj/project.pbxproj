@@ -25,6 +25,9 @@
 		D0E9091D2DAEEE6E004DAF3B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9091C2DAEEE6E004DAF3B /* Extension.swift */; };
 		D0E909E92DB169F6004DAF3B /* MediaAttachmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */; };
 		D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */; };
+		D0E90ABE2DB2DBD6004DAF3B /* WhatAppProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */; };
+		D0E90AC22DB2DBDB004DAF3B /* WhatAppProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */; };
+		D0E90AC32DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,20 +70,10 @@
 		D0E9091C2DAEEE6E004DAF3B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAttachmentPreview.swift; sourceTree = "<group>"; };
 		D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaImageModel.swift; sourceTree = "<group>"; };
+		D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectTests.swift; sourceTree = "<group>"; };
+		D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectUITests.swift; sourceTree = "<group>"; };
+		D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D0E908C02DAEBB2E004DAF3B /* WhatAppProjectTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WhatAppProjectTests;
-			sourceTree = "<group>";
-		};
-		D0E908CA2DAEBB2E004DAF3B /* WhatAppProjectUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WhatAppProjectUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D0E908A92DAEBB2B004DAF3B /* Frameworks */ = {
@@ -111,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				D0E909042DAEC51D004DAF3B /* WhatAppProject */,
-				D0E908C02DAEBB2E004DAF3B /* WhatAppProjectTests */,
-				D0E908CA2DAEBB2E004DAF3B /* WhatAppProjectUITests */,
+				D0E90ABD2DB2DBD6004DAF3B /* WhatAppProjectTests */,
+				D0E90AC12DB2DBDB004DAF3B /* WhatAppProjectUITests */,
 				D0E908AD2DAEBB2B004DAF3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,6 +202,23 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		D0E90ABD2DB2DBD6004DAF3B /* WhatAppProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */,
+			);
+			path = WhatAppProjectTests;
+			sourceTree = "<group>";
+		};
+		D0E90AC12DB2DBDB004DAF3B /* WhatAppProjectUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */,
+				D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */,
+			);
+			path = WhatAppProjectUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -244,9 +254,6 @@
 			dependencies = (
 				D0E908BF2DAEBB2E004DAF3B /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				D0E908C02DAEBB2E004DAF3B /* WhatAppProjectTests */,
-			);
 			name = WhatAppProjectTests;
 			packageProductDependencies = (
 			);
@@ -266,9 +273,6 @@
 			);
 			dependencies = (
 				D0E908C92DAEBB2E004DAF3B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D0E908CA2DAEBB2E004DAF3B /* WhatAppProjectUITests */,
 			);
 			name = WhatAppProjectUITests;
 			packageProductDependencies = (
@@ -375,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E90ABE2DB2DBD6004DAF3B /* WhatAppProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +387,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E90AC22DB2DBDB004DAF3B /* WhatAppProjectUITests.swift in Sources */,
+				D0E90AC32DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,14 +531,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = WhatAppProject/WhatAppProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatAppProject/Preview Content\"";
+				DEVELOPMENT_TEAM = J6DLB4DD6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -552,14 +562,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = WhatAppProject/WhatAppProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatAppProject/Preview Content\"";
+				DEVELOPMENT_TEAM = J6DLB4DD6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

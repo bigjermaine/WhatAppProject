@@ -11,16 +11,19 @@ struct ChatRoomScreen: View {
     @StateObject var chatViewModel = ChatViewModel()
     @State private var keyboardHeight: CGFloat = 0
     var body: some View {
-        MessageListView(viewModel: chatViewModel)
+          MessageListView(viewModel: chatViewModel)
+            .onTapGesture {
+                hideKeyboard()
+            }
         .safeAreaInset(edge: .bottom) {
             bottomAreaView
-                .keyboardAdaptive()
+               
         }
         .toolbar{
             leadingNAVItem()
             trailingNAVItem()
         }
-        .ignoresSafeArea(edges:.bottom)
+       // .ignoresSafeArea(edges:.bottom)
         .animation(.easeInOut, value: chatViewModel.showPhotopIckerPreview)
         .photosPicker(isPresented: $chatViewModel.showPhotoPicker, selection: $chatViewModel.photoPickerItmes,maxSelectionCount:6,photoLibrary: .shared())
         
@@ -42,6 +45,13 @@ struct ChatRoomScreen: View {
             Divider()
         }
     }
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                        to: nil,
+                                        from: nil,
+                                        for: nil)
+    }
+    
 }
 
 extension ChatRoomScreen {
@@ -83,31 +93,152 @@ extension ChatRoomScreen {
     }
 }
 
-extension View {
-    func keyboardAdaptive() -> some View {
-        ModifiedContent(content: self, modifier: KeyboardAdaptive())
+
+
+
+struct MessageListView1: View {
+    @ObservedObject var viewModel: ChatViewModel
+    @State private var scrollToBottomId: UUID?
+    
+    var body: some View {
+        ScrollViewReader { proxy in
+            List {
+                ForEach(viewModel.messageItem.indices, id: \.self) { index in
+                    let message = viewModel.messageItem[index]
+                    let showDateHeader = shouldShowDateHeader(for: index)
+                    
+                    messageCell(for: message, showDateHeader: showDateHeader)
+                        .listRowInsets(EdgeInsets())
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                        .id(index == viewModel.messageItem.count - 1 ? scrollToBottomId : nil)
+                }
+            }
+            .listStyle(PlainListStyle())
+            .background(Color.clear)
+            .onChange(of: viewModel.messageItem.count) { _ in
+                withAnimation {
+                    scrollToBottom(using: proxy)
+                }
+            }
+            .onAppear {
+                scrollToBottomId = UUID()
+            }
+        }
+    }
+    
+    private func messageCell(for message: MessageItem, showDateHeader: Bool) -> some View {
+        Group {
+            switch message.type {
+            case .photo:
+                BubbleImageView(item: message)
+            case .text:
+                BubbleTextView(
+                    item: message,
+                    showDateHeader: showDateHeader,
+                    dateHeaderText: message.date.relativeDateString
+                )
+            case .video, .audio:
+                BubbleAudioView(item: message)
+            }
+        }
+    }
+    
+    private func shouldShowDateHeader(for index: Int) -> Bool {
+        guard index > 0 else { return true }
+        let current = viewModel.messageItem[index].date.relativeDateString
+        let previous = viewModel.messageItem[index - 1].date.relativeDateString
+        return current != previous
+    }
+    
+    private func scrollToBottom(using proxy: ScrollViewProxy) {
+        guard !viewModel.messageItem.isEmpty else { return }
+        let lastIndex = viewModel.messageItem.count - 1
+        scrollToBottomId = UUID()
+        proxy.scrollTo(lastIndex, anchor: .bottom)
     }
 }
 
-struct KeyboardAdaptive: ViewModifier {
-    @State private var keyboardHeight: CGFloat = 0
-    
-    func body(content: Content) -> some View {
-        content
-            .padding(.bottom, keyboardHeight)
-            .animation(.easeOut(duration: 0.16), value: keyboardHeight)
-            .onAppear {
-                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-                    guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-                    keyboardHeight = keyboardFrame.height
-                }
-                
-                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-                    keyboardHeight = 0
-                }
-            }
-            .onDisappear {
-                NotificationCenter.default.removeObserver(self)
-            }
-    }
-}
+
+
+//
+//struct MessageListView1: View {
+//    @ObservedObject var viewModel: ChatViewModel
+//    @State private var scrollToBottomId: UUID?
+//    
+//    var body: some View {
+//        VStack{
+//            ScrollViewReader { proxy in
+//                ScrollView {
+//                    ForEach(viewModel.messageItem.indices, id: \.self) { index in
+//                        let message = viewModel.messageItem[index]
+//                        let showDateHeader = shouldShowDateHeader(for: index)
+//                        
+//                        messageCell(for: message, showDateHeader: showDateHeader)
+//                            .listRowInsets(EdgeInsets())
+//                            .listRowSeparator(.hidden)
+//                            .listRowBackground(Color.clear)
+//                            .id(index == viewModel.messageItem.count - 1 ? scrollToBottomId : nil)
+//                    }
+//                }
+//                .listStyle(PlainListStyle())
+//                .background(Color.clear)
+//                .onChange(of: viewModel.messageItem.count) { _ in
+//                    withAnimation {
+//                        scrollToBottom(using: proxy)
+//                    }
+//                }
+//                
+//                bottomAreaView
+//            }
+//            
+//        }
+//    }
+//    var bottomAreaView: some View {
+//        VStack{
+////            if viewModel.showPhotopIckerPreview {
+////                MediaAttachmentPreview(selectedPhotos: viewModel.selectedPhotos, actionHanler:{ action in
+////                    viewModel.mediaPreviewActions(actions: action)})
+////            }
+////            Divider()
+//            TextInputArea(text: $viewModel.messageText, sendButtonIsEnabled: viewModel.sendButtonIsEnabled, actionHandler: {
+//                action in
+//                viewModel.handleText(action)
+//              
+//            })
+//           // Divider()
+//        }
+//    }
+//    private func messageCell(for message: MessageItem, showDateHeader: Bool) -> some View {
+//        Group {
+//            switch message.type {
+//            case .photo:
+//                BubbleImageView(item: message)
+//            case .text:
+//                BubbleTextView(
+//                    item: message,
+//                    showDateHeader: showDateHeader,
+//                    dateHeaderText: message.date.relativeDateString
+//                )
+//            case .video, .audio:
+//                BubbleAudioView(item: message)
+//            }
+//        }
+//    }
+//    
+//    private func shouldShowDateHeader(for index: Int) -> Bool {
+//        guard index > 0 else { return true }
+//        let current = viewModel.messageItem[index].date.relativeDateString
+//        let previous = viewModel.messageItem[index - 1].date.relativeDateString
+//        return current != previous
+//    }
+//    
+//    private func scrollToBottom(using proxy: ScrollViewProxy) {
+//        guard !viewModel.messageItem.isEmpty else { return }
+//        let lastIndex = viewModel.messageItem.count + 4
+//        scrollToBottomId = UUID()
+//        proxy.scrollTo(lastIndex, anchor: .bottom)
+//    }
+//}
+//
+//
