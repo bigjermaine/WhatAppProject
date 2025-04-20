@@ -10,7 +10,7 @@ import Combine
 class ChatViewModel:ObservableObject {
     
     @Published var messageItem:[MessageItem] = []
-    @Published var messageText:String = "4"
+    @Published var messageText:String = "4eeee"
     @Published var showPhotoPicker:Bool = false
     @Published var photoPickerItmes:[PhotosPickerItem] = []
     @Published var selectedPhotos:[MediaImageModel] = []
