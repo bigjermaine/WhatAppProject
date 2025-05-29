@@ -67,6 +67,6 @@ struct BubbleAudioView: View {
 }
 
 #Preview {
-    BubbleAudioView(item: .sentPlaceHolder)
+    BubbleAudioView(item: .receivedPlaceholder)
         .padding()
 }

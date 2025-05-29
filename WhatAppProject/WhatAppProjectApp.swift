@@ -12,7 +12,7 @@ struct WhatAppProjectApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack{
-                ChatRoomScreen()
+                PassportPaymentView()
             }
         }
     }

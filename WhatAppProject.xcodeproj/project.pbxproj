@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00407DB2DE741840098E654 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00407DA2DE741840098E654 /* StepView.swift */; };
+		D00407DD2DE758030098E654 /* ApplicationReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00407DC2DE758030098E654 /* ApplicationReason.swift */; };
+		D004080C2DE75F7E0098E654 /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004080B2DE75F730098E654 /* StepViewModel.swift */; };
+		D0A180D42DC8D87C008D8675 /* SupportTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A180D32DC8D87C008D8675 /* SupportTicket.swift */; };
+		D0A180D72DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A180D62DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift */; };
+		D0A180D92DC8E51C008D8675 /* SendMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A180D82DC8E51C008D8675 /* SendMessageResponse.swift */; };
+		D0A181012DC91700008D8675 /* BookingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181002DC91700008D8675 /* BookingDetailsView.swift */; };
+		D0A181512DCA1F0F008D8675 /* PassportPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181502DCA1F0F008D8675 /* PassportPaymentView.swift */; };
+		D0A181A32DCA25B3008D8675 /* GatewayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181A22DCA25B3008D8675 /* GatewayResponse.swift */; };
+		D0A181CD2DCA3390008D8675 /* PaymentLinkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */; };
+		D0A181CF2DCA406E008D8675 /* PaymentWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */; };
 		D0E909052DAEC51D004DAF3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FB2DAEC51D004DAF3B /* Preview Assets.xcassets */; };
 		D0E909062DAEC51D004DAF3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FD2DAEC51D004DAF3B /* Assets.xcassets */; };
 		D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */; };
@@ -48,6 +59,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D00407DA2DE741840098E654 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		D00407DC2DE758030098E654 /* ApplicationReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationReason.swift; sourceTree = "<group>"; };
+		D004080B2DE75F730098E654 /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
+		D0A180D32DC8D87C008D8675 /* SupportTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTicket.swift; sourceTree = "<group>"; };
+		D0A180D62DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTicketRequestProtocol.swift; sourceTree = "<group>"; };
+		D0A180D82DC8E51C008D8675 /* SendMessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageResponse.swift; sourceTree = "<group>"; };
+		D0A181002DC91700008D8675 /* BookingDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsView.swift; sourceTree = "<group>"; };
+		D0A181502DCA1F0F008D8675 /* PassportPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportPaymentView.swift; sourceTree = "<group>"; };
+		D0A181A22DCA25B3008D8675 /* GatewayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayResponse.swift; sourceTree = "<group>"; };
+		D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLinkResponse.swift; sourceTree = "<group>"; };
+		D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWebView.swift; sourceTree = "<group>"; };
 		D0E908AC2DAEBB2B004DAF3B /* WhatAppProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatAppProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908BD2DAEBB2E004DAF3B /* WhatAppProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908C72DAEBB2E004DAF3B /* WhatAppProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +122,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D00407D92DE741710098E654 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D00407DA2DE741840098E654 /* StepView.swift */,
+				D00407DC2DE758030098E654 /* ApplicationReason.swift */,
+				D004080B2DE75F730098E654 /* StepViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0A180D52DC8D8A8008D8675 /* Manager  */ = {
+			isa = PBXGroup;
+			children = (
+				D0A180D62DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift */,
+			);
+			path = "Manager ";
+			sourceTree = "<group>";
+		};
 		D0E908A32DAEBB2B004DAF3B = {
 			isa = PBXGroup;
 			children = (
@@ -125,9 +165,11 @@
 			children = (
 				D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */,
 				D0E908F22DAEC51D004DAF3B /* BubbleImageView.swift */,
+				D0A181502DCA1F0F008D8675 /* PassportPaymentView.swift */,
 				D0E908F32DAEC51D004DAF3B /* BubbleTailView.swift */,
 				D0E908F42DAEC51D004DAF3B /* BubbleTextView.swift */,
 				D0E908F52DAEC51D004DAF3B /* TextInputArea.swift */,
+				D0A181002DC91700008D8675 /* BookingDetailsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -144,7 +186,11 @@
 		D0E908FA2DAEC51D004DAF3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D0A181A22DCA25B3008D8675 /* GatewayResponse.swift */,
+				D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */,
 				D0E908F92DAEC51D004DAF3B /* MessageItem.swift */,
+				D0A180D82DC8E51C008D8675 /* SendMessageResponse.swift */,
+				D0A180D32DC8D87C008D8675 /* SupportTicket.swift */,
 				D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */,
 			);
 			path = Models;
@@ -161,6 +207,8 @@
 		D0E909042DAEC51D004DAF3B /* WhatAppProject */ = {
 			isa = PBXGroup;
 			children = (
+				D00407D92DE741710098E654 /* Views */,
+				D0A180D52DC8D8A8008D8675 /* Manager  */,
 				D0E909132DAEC526004DAF3B /* ViewModel */,
 				D0E908F62DAEC51D004DAF3B /* Components */,
 				D0E908F82DAEC51D004DAF3B /* Helpers */,
@@ -198,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */,
+				D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -357,18 +406,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E909E92DB169F6004DAF3B /* MediaAttachmentPreview.swift in Sources */,
+				D0A181A32DCA25B3008D8675 /* GatewayResponse.swift in Sources */,
 				D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */,
+				D00407DB2DE741840098E654 /* StepView.swift in Sources */,
 				D0E909082DAEC51D004DAF3B /* BubbleImageView.swift in Sources */,
+				D0A181512DCA1F0F008D8675 /* PassportPaymentView.swift in Sources */,
 				D0E909092DAEC51D004DAF3B /* BubbleTailView.swift in Sources */,
+				D0A181CF2DCA406E008D8675 /* PaymentWebView.swift in Sources */,
 				D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */,
 				D0E9090A2DAEC51D004DAF3B /* BubbleTextView.swift in Sources */,
 				D0E9090B2DAEC51D004DAF3B /* TextInputArea.swift in Sources */,
 				D0E9090C2DAEC51D004DAF3B /* BubbleModifier.swift in Sources */,
 				D0E9090D2DAEC51D004DAF3B /* MessageItem.swift in Sources */,
+				D0A181012DC91700008D8675 /* BookingDetailsView.swift in Sources */,
+				D0A181CD2DCA3390008D8675 /* PaymentLinkResponse.swift in Sources */,
+				D0A180D72DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift in Sources */,
+				D0A180D42DC8D87C008D8675 /* SupportTicket.swift in Sources */,
 				D0E9090E2DAEC51D004DAF3B /* ChatRoomScreen.swift in Sources */,
+				D004080C2DE75F7E0098E654 /* StepViewModel.swift in Sources */,
 				D0E9090F2DAEC51D004DAF3B /* ContentView.swift in Sources */,
+				D0A180D92DC8E51C008D8675 /* SendMessageResponse.swift in Sources */,
 				D0E9091D2DAEEE6E004DAF3B /* Extension.swift in Sources */,
 				D0E909102DAEC51D004DAF3B /* MessageListControllerViewController.swift in Sources */,
+				D00407DD2DE758030098E654 /* ApplicationReason.swift in Sources */,
 				D0E909152DAEC530004DAF3B /* ChatViewModel.swift in Sources */,
 				D0E909112DAEC51D004DAF3B /* MessageListView.swift in Sources */,
 				D0E909122DAEC51D004DAF3B /* WhatAppProjectApp.swift in Sources */,

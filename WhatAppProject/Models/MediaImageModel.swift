@@ -12,3 +12,9 @@ struct MediaImageModel {
     var id:String
     var photo:UIImage
 }
+
+
+struct SendMessageModel:Codable {
+    var content:String
+    var photo:[String]
+}

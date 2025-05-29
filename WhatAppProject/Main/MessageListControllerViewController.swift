@@ -38,6 +38,7 @@ class MessageListControllerViewController: UIViewController, UITableViewDelegate
     }
     
     deinit {
+        viewModel.stopObservingMessages()
         subscriptions.forEach { $0.cancel() }
     }
     

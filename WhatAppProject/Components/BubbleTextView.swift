@@ -63,7 +63,7 @@ struct BubbleTextView: View {
 
 #Preview {
     ScrollView{
-        BubbleTextView(item: .receivePlaceHolder, showDateHeader: true, dateHeaderText: "jermaine")
+        BubbleTextView(item: .receivedPlaceholder, showDateHeader: true, dateHeaderText: "jermaine")
        
     }
     .frame(maxWidth: .infinity)

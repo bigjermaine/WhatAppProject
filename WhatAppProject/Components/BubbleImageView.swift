@@ -109,8 +109,8 @@ struct BubbleImageView: View {
 
 #Preview {
     ScrollView{
-        BubbleImageView(item:.sentPlaceHolder)
-        BubbleImageView(item:.receivePlaceHolder)
+        BubbleImageView(item:.sentPlaceholder)
+        BubbleImageView(item:.receivedPlaceholder)
     }
     .frame(maxWidth: .infinity)
     .padding(.horizontal)

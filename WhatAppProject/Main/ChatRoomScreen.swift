@@ -24,15 +24,15 @@ struct ChatRoomScreen: View {
             trailingNAVItem()
         }
        // .ignoresSafeArea(edges:.bottom)
-        .animation(.easeInOut, value: chatViewModel.showPhotopIckerPreview)
-        .photosPicker(isPresented: $chatViewModel.showPhotoPicker, selection: $chatViewModel.photoPickerItmes,maxSelectionCount:6,photoLibrary: .shared())
+        .animation(.easeInOut, value: chatViewModel.showPhotoPicker)
+        .photosPicker(isPresented: $chatViewModel.showPhotoPicker, selection: $chatViewModel.photoPickerItems,maxSelectionCount:6,photoLibrary: .shared())
         
            
       }
     
     var bottomAreaView: some View {
         VStack{
-            if chatViewModel.showPhotopIckerPreview {
+            if chatViewModel.showPhotoPicker {
                 MediaAttachmentPreview(selectedPhotos: chatViewModel.selectedPhotos, actionHanler:{ action in
                     chatViewModel.mediaPreviewActions(actions: action)})
             }
@@ -160,85 +160,3 @@ struct MessageListView1: View {
 }
 
 
-
-//
-//struct MessageListView1: View {
-//    @ObservedObject var viewModel: ChatViewModel
-//    @State private var scrollToBottomId: UUID?
-//    
-//    var body: some View {
-//        VStack{
-//            ScrollViewReader { proxy in
-//                ScrollView {
-//                    ForEach(viewModel.messageItem.indices, id: \.self) { index in
-//                        let message = viewModel.messageItem[index]
-//                        let showDateHeader = shouldShowDateHeader(for: index)
-//                        
-//                        messageCell(for: message, showDateHeader: showDateHeader)
-//                            .listRowInsets(EdgeInsets())
-//                            .listRowSeparator(.hidden)
-//                            .listRowBackground(Color.clear)
-//                            .id(index == viewModel.messageItem.count - 1 ? scrollToBottomId : nil)
-//                    }
-//                }
-//                .listStyle(PlainListStyle())
-//                .background(Color.clear)
-//                .onChange(of: viewModel.messageItem.count) { _ in
-//                    withAnimation {
-//                        scrollToBottom(using: proxy)
-//                    }
-//                }
-//                
-//                bottomAreaView
-//            }
-//            
-//        }
-//    }
-//    var bottomAreaView: some View {
-//        VStack{
-////            if viewModel.showPhotopIckerPreview {
-////                MediaAttachmentPreview(selectedPhotos: viewModel.selectedPhotos, actionHanler:{ action in
-////                    viewModel.mediaPreviewActions(actions: action)})
-////            }
-////            Divider()
-//            TextInputArea(text: $viewModel.messageText, sendButtonIsEnabled: viewModel.sendButtonIsEnabled, actionHandler: {
-//                action in
-//                viewModel.handleText(action)
-//              
-//            })
-//           // Divider()
-//        }
-//    }
-//    private func messageCell(for message: MessageItem, showDateHeader: Bool) -> some View {
-//        Group {
-//            switch message.type {
-//            case .photo:
-//                BubbleImageView(item: message)
-//            case .text:
-//                BubbleTextView(
-//                    item: message,
-//                    showDateHeader: showDateHeader,
-//                    dateHeaderText: message.date.relativeDateString
-//                )
-//            case .video, .audio:
-//                BubbleAudioView(item: message)
-//            }
-//        }
-//    }
-//    
-//    private func shouldShowDateHeader(for index: Int) -> Bool {
-//        guard index > 0 else { return true }
-//        let current = viewModel.messageItem[index].date.relativeDateString
-//        let previous = viewModel.messageItem[index - 1].date.relativeDateString
-//        return current != previous
-//    }
-//    
-//    private func scrollToBottom(using proxy: ScrollViewProxy) {
-//        guard !viewModel.messageItem.isEmpty else { return }
-//        let lastIndex = viewModel.messageItem.count + 4
-//        scrollToBottomId = UUID()
-//        proxy.scrollTo(lastIndex, anchor: .bottom)
-//    }
-//}
-//
-//
