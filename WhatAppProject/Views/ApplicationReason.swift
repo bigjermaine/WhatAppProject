@@ -12,6 +12,16 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
     case expiredPassport = "Expired Passport"
     case exhaustedPages = "Exhausted Pages"
     case lostPassport = "Lost Passport"
+    var reason: String {
+        switch self {
+        case .expiredPassport:
+           return  "Expired"
+        case .exhaustedPages:
+            return  "Exhausted"
+        case .lostPassport:
+            return  "Lost"
+        }
+    }
     var id: String { self.rawValue }
 }
 
@@ -19,7 +29,11 @@ struct ApplicationReasonView: View {
     @State private var selectedReason: ApplicationReason = .expiredPassport
     @State private var passportNumber = ""
     @State private var dateOfBirth = ""
-
+    @State private var availablePassport:Bool =  false
+    @State private var showDatePicker: Bool = false
+    @State private var selectedDate: Date = Date()
+    @StateObject private var viewModel: StepViewModel = .init()
+      
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 40) {
@@ -34,10 +48,10 @@ struct ApplicationReasonView: View {
                     HStack {
                         ForEach(ApplicationReason.allCases) { reason in
                             Button(action: {
-                                selectedReason = reason
+                                viewModel.selectedReason = reason
                             }) {
                                 HStack {
-                                    Image(systemName: selectedReason == reason ? "largecircle.fill.circle" : "circle")
+                                    Image(systemName: viewModel.selectedReason == reason ? "largecircle.fill.circle" : "circle")
                                         .foregroundColor(.accentColor)
                                     Text(reason.rawValue)
                                         .font(.subheadline)
@@ -47,6 +61,20 @@ struct ApplicationReasonView: View {
                             }
                         }
                     }
+                    if  viewModel.selectedReason  == .lostPassport {
+                        HStack {
+                            Image(systemName: availablePassport == true ? "checkmark.square.fill" : "square")
+                                .foregroundColor(availablePassport == true ? .green : .gray)
+                            Text("If you do not have a profile, please enter your ticket number.")
+                                .font(.subheadline)
+                        }
+                        .padding(.horizontal)
+                        .onTapGesture {
+                            availablePassport.toggle()
+                            
+                        }
+                    }
+                    
                 }
                 .padding()
                 .background(Color.white)
@@ -62,26 +90,29 @@ struct ApplicationReasonView: View {
                         Text("Kindly provide the necessary information relevant to the selected application reason")
                             .font(.subheadline)
                             .foregroundColor(.gray)
-                        VStack(alignment: .leading,spacing: 10){
-                            Text("Current Passport No")
-                                .font(.subheadline)
-                              
-                            TextFieldWithBottomLine(placeholder: "Current Passport No", text:  $passportNumber)
-                        }
-                        VStack(alignment: .leading,spacing: 10){
-                            Text("Date of Birth (YYYY-MM-DD)")
-                                .font(.subheadline)
+                        
+                        switch  viewModel.selectedReason {
+                        case.exhaustedPages:
+                            currentPassport
+                        case.expiredPassport:
+                            currentPassport
+                        case.lostPassport:
+                            if availablePassport {
+                                LostPassport
+                            }else {
+                                currentPassport
+                            }
                             
-                            TextFieldWithBottomLine(placeholder: "Date of Birth (YYYY-MM-DD)", text:  $dateOfBirth)
                         }
-                      
-                       
                         
                     }
                     
-    
                     Button(action: {
-                        // Check eligibility action
+                        if  viewModel.selectedReason == .lostPassport {
+                            
+                        }else {
+                            viewModel.checkEligibility()
+                        }
                     }) {
                         Text("CHECK ELIGIBILITY")
                             .foregroundColor(.white)
@@ -98,8 +129,39 @@ struct ApplicationReasonView: View {
                 .cornerRadius(12)
                 .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
                 .padding(.vertical)
+                .sheet(isPresented: $showDatePicker) {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                showDatePicker = false
+                            }) {
+                                Text("Done")
+                                    .fontWeight(.bold)
+                            }
+                            .padding()
+                        }
+                        
+                        DatePicker(
+                            "Select Date of Birth",
+                            selection: $selectedDate,
+                            displayedComponents: .date
+                        )
+                        .datePickerStyle(WheelDatePickerStyle())
+                        .labelsHidden()
+                        .padding()
+                        .onChange(of: selectedDate) { newValue in
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "yyyy-MM-dd"
+                            dateOfBirth = formatter.string(from: newValue)
+                            viewModel.birthDate =  formatter.string(from: newValue)
+                        }
+                        
+                        Spacer()
+                    }
+                    .padding()
+                }
             }
-            .padding()
         }
     }
 }
@@ -110,6 +172,62 @@ struct ApplicationReasonView_Previews: PreviewProvider {
     }
 }
 
+extension ApplicationReasonView {
+    var currentPassport:some View {
+        VStack(alignment: .leading){
+            VStack(alignment: .leading,spacing: 10){
+                TextFieldWithBottomLine(placeholder: "Current Passport No", text:  $viewModel.docNo)
+            }
+            VStack(alignment: .leading,spacing: 10){
+                TextFieldWithBottomLine(
+                    placeholder: "Date of Birth (YYYY-MM-DD)",
+                    text: Binding(
+                        get: { dateOfBirth },
+                        set: { _ in
+                            
+                            
+                        }
+                    )
+                )
+                .disabled(true)
+                .onTapGesture {
+                    showDatePicker = true
+                }
+                
+            }
+        }
+    }
+    
+    var LostPassport:some View {
+        VStack(alignment: .leading){
+            VStack(alignment: .leading,spacing: 10){
+                Text("Lastname")
+                    .font(.subheadline)
+                
+                TextFieldWithBottomLine(placeholder: "Lastname", text:  $viewModel.docNo)
+            }
+            VStack(alignment: .leading,spacing: 10){
+              
+                TextFieldWithBottomLine(
+                    placeholder: "Date of Birth (YYYY-MM-DD)",
+                    text: Binding(
+                        get: { dateOfBirth },
+                        set: { _ in
+                         
+                        } // disables manual typing
+                    )
+                )
+                .disabled(true)
+                .onTapGesture {
+                    showDatePicker = true
+                }
+                
+            }
+            }
+        }
+    
+
+}
 
 // Reusable form field component
 struct FormField: View {

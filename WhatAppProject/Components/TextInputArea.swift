@@ -8,7 +8,7 @@
 
 
 import SwiftUI
-import SwiftUI
+
 
 struct TextInputArea: View {
     @Binding var text: String

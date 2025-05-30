@@ -7,6 +7,8 @@
 import SwiftUI
 import PhotosUI
 import Combine
+
+
 class ChatViewModel: ObservableObject {
     @Published var messageItem: [MessageItem] = []
     @Published var messageText: String = ""
@@ -18,6 +20,9 @@ class ChatViewModel: ObservableObject {
     @Published var paymentRequest:PaymentRequest?
     @Published var isLoading: Bool = false
     @Published var didOpen : Bool = false
+    @Published var docNo:String = ""
+    @Published var birthDate:String = ""
+    @Published var appReason:String = ""
     @Published var link:String = ""
     var subscriptions = Set<AnyCancellable>()
     private var messagePollingTimer: Timer?
@@ -43,7 +48,7 @@ class ChatViewModel: ObservableObject {
             return lhsDate < rhsDate
         }
     }
-
+    
     var showPhotoPickerPreview: Bool {
         return !photoPickerItems.isEmpty
     }
@@ -51,8 +56,21 @@ class ChatViewModel: ObservableObject {
     init(supportTicketService: SupportTicketRequestProtocol = SupportTicketService()) {
         self.supportTicketService = supportTicketService
         onPhotoPickerSelection()
-        //loadSupportTicketMessages()
-      //  startObservingMessages(ticketNo: "306-4558E411-7431")
+        
+    }
+    
+    
+    func checkEligibility(){
+        Task{
+            do {
+                let eligibility =  try await supportTicketService.getEligiblity(docNo: docNo, birthdate: birthDate, appReason: appReason)
+                await MainActor.run {
+                    
+                }
+            }catch {
+                print("Error loading support ticket messages: \(error.localizedDescription)")
+            }
+        }
     }
     
     func startObservingMessages(ticketNo: String) {
@@ -70,7 +88,7 @@ class ChatViewModel: ObservableObject {
             self?.loadSupportTicketMessages(ticketNo: "306-4558E411-7431")
         }
     }
-
+    
     func stopObservingMessages() {
         messagePollingTimer?.invalidate()
         messagePollingTimer = nil
@@ -82,7 +100,7 @@ class ChatViewModel: ObservableObject {
                 let ticket = try await supportTicketService.fetchSupportTicket(byTicketNo: ticketNo)
                 await MainActor.run {
                     self.convertSupportMessagesToMessageItems(ticket.messages ?? [],
-                                                           isAgent: ticket.agentName)
+                                                              isAgent: ticket.agentName)
                     self.supportTicket = ticket
                 }
             } catch {
@@ -107,7 +125,7 @@ class ChatViewModel: ObservableObject {
                 }
             } catch {
                 print("Error loading support ticket messages: \(error.localizedDescription)")
-              
+                
             }
         }
     }
@@ -116,7 +134,7 @@ class ChatViewModel: ObservableObject {
         isLoading =  true
         Task {
             do {
-              
+                
                 guard let paymentRequest = paymentRequest else {return}
                 print(paymentRequest)
                 let ticket = try await supportTicketService.initiatePayment(payment: paymentRequest)
@@ -129,10 +147,10 @@ class ChatViewModel: ObservableObject {
             } catch {
                 isLoading =  false
                 print("Error loading support ticket messages: \(error.localizedDescription)")
-              
+                
             }
         }
-      
+        
     }
     
     private func convertSupportMessagesToMessageItems(_ messages: [SupportMessage], isAgent: String) {
@@ -193,7 +211,7 @@ class ChatViewModel: ObservableObject {
             showPhotoPicker = true
         case .sendMessage:
             let base64Images = selectedPhotos.compactMap { $0.photo.base64String }
-                  
+            
             sendMessages(model: SendMessageModel(content: messageText, photo: base64Images))
             let message = MessageItem(
                 text: messageText,
@@ -220,7 +238,7 @@ class ChatViewModel: ObservableObject {
                 let ticket = try await supportTicketService.sendMessage(ticketId:supportTicket?.id ?? "", model: model)
                 print(ticket)
                 await MainActor.run {
-                
+                    
                 }
             } catch {
                 print("Error loading support ticket messages: \(error.localizedDescription)")
@@ -285,11 +303,11 @@ class StripePaymentProcessor: PaymentProcessor {
 // High-level module
 class CheckoutService {
     private let paymentProcessor: PaymentProcessor
-
+    
     init(paymentProcessor: PaymentProcessor) {
         self.paymentProcessor = paymentProcessor
     }
-
+    
     func checkout(amount: Double) {
         paymentProcessor.processPayment(amount: amount)
     }

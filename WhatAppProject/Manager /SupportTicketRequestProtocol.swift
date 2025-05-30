@@ -18,14 +18,20 @@ protocol SupportTicketRequestProtocol {
 
     func getPayments() async throws -> GatewayResponse
     func initiatePayment(payment:PaymentRequest) async throws -> PaymentLinkResponse
+    func getEligiblity(docNo: String, birthdate: String, appReason: String)  async throws -> ETCDataResponse
 }
 
 // MARK: - Service Implementation
 class SupportTicketService: SupportTicketRequestProtocol {
+ 
+    
     private let domain: String
     private let urlSession: URLSession
-    let  token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IkIyNTdFM0QzMjcwRjU1NjI5QjFCQjdBREYwQjg3MzY4NjI1OUE0ODAiLCJ4NXQiOiJzbGZqMHljUFZXS2JHN2V0OExoemFHSlpwSUEiLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiIzYTE1ZGU2YS0zY2RkLWEwNWMtMmUzMS02NDAwOGUwNmI3YWUiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJsdW1teXNtYXJ0IiwiZW1haWwiOiJuZXdzdW5mYWRAeWFob28uY29tIiwicm9sZSI6Im1vYmlsZWFkbWluIiwiZ2l2ZW5fbmFtZSI6Ik9sdW1pZGUgU21hcnQiLCJmYW1pbHlfbmFtZSI6IkZhZGF5b21pIiwicGhvbmVfbnVtYmVyIjoiKzIzNDgwOTM1NTE5NzMiLCJwaG9uZV9udW1iZXJfdmVyaWZpZWQiOiJUcnVlIiwiZW1haWxfdmVyaWZpZWQiOiJUcnVlIiwidW5pcXVlX25hbWUiOiJsdW1teXNtYXJ0Iiwib2lfcHJzdCI6Ik1vYmlsZSIsIm9pX2F1X2lkIjoiM2ExOWI3YTAtM2I1Ny01YzM5LTNkZjQtNWU0ZmJiMjVjZGQ5IiwiY2xpZW50X2lkIjoiTW9iaWxlIiwib2lfdGtuX2lkIjoiM2ExOWI3YTAtM2Q2Ny04ZmZmLTc4NmYtY2E3NmMwMTNlYTAzIiwic2NvcGUiOiJvZmZsaW5lX2FjY2VzcyBvcGVuaWQgcHJvZmlsZSBlbWFpbCBwaG9uZSIsImp0aSI6IjkzMzYyMDE1LTg5ODEtNGEyOC1hZDczLTY1ZWFiMGZmOWYyYiIsImV4cCI6MTc0NjUzNjEyNSwiaXNzIjoiaHR0cDovLzE3Mi4zMS4xMC4yMjo1MDAxLyIsImlhdCI6MTc0NjUzMjUyNX0.zTVqNrL354sGzpbhz7832hqRHLSVQ82ZXPAf3BMK88B2XUDJ2KTZhrbdzwtYZD2gFJzDNH2_7PVdhYxzedBwleYoxdhkpbEh3mOHTZRHBzmCu4rMV6C3DZ5CvL1YhgcIiL1CNtWLSjdInzxVKP0ufknveTAfFiL9Hn22GTnt6_NQj9NoKyj4cJqkTBX10F6W89w_y5VE0HLDNpB6DH9yffM_JMDDkZvmRFQUL17xrKwvX1Y3mwR7sIspAAjBC8GXbVBv-vUebhj2nGx-7afiGNkpu5CkRf-Zeqpk_7LymU0JGkCsPc9IZhl5tdpUensSo9IWIryVDUE9HhCgKDAAv8iD9kQ15m6NprZlNEm-r_hgnsVpU-O4fte9_tM5Rplt3BQPAT77Io8kqISC2rYErkNx8tRoHLSx7hFZcn4nHRMyfpcW3pky6ij04H0dcVvv-lOreun8tmXJ45Lo5MQw090ZsVnN52GnIJ-OqGn7GGn-I46zh-BGnfhC2hiTPNLfo3GRVYSO2cXgsJgqvxDr11fcrlKN83TVLdEQ5rpWbmnyQaQ9bEm35GjMQT4Hp8-rME2Ed1SxXK1lQGTaSRUYEh6DOWw7F-pImRaoIi0J3TiXDLiP96iZ2vWJVTe_JjwfkPc8e7oAQw5OYUln4o4-WWGZspVj4LWh3AWCnM_JkT4"
-    init(domain: String = "https://epms.irissmart.com:7006", urlSession: URLSession = .shared) {
+    let  token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IkIyNTdFM0QzMjcwRjU1NjI5QjFCQjdBREYwQjg3MzY4NjI1OUE0ODAiLCJ4NXQiOiJzbGZqMHljUFZXS2JHN2V0OExoemFHSlpwSUEiLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiIzYTE5NGI1OC04YmE1LWUwNDgtNGRiMi1kOTA0MWIwYjYwODYiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjoiRmFsc2UiLCJlbWFpbF92ZXJpZmllZCI6IlRydWUiLCJ1bmlxdWVfbmFtZSI6ImFkbWluIiwib2lfcHJzdCI6IkFuZ3VsYXIiLCJvaV9hdV9pZCI6IjNhMWEzM2VlLTY3YTAtNjA2MS0wYTliLTlhMTYwZTdlNWJhZSIsImNsaWVudF9pZCI6IkFuZ3VsYXIiLCJvaV90a25faWQiOiIzYTFhMzNlZS02N2JmLTQxNjEtMDBjOC0wZDk2MzlkZWNmZTgiLCJzY29wZSI6Im9mZmxpbmVfYWNjZXNzIG9wZW5pZCBwcm9maWxlIGVtYWlsIHBob25lIiwianRpIjoiOTRiMzEwNDItYzA0OS00ZGQxLTg0MTYtZGZiYzRmZDk0MmE1IiwiZXhwIjoxNzQ4NjIxNjIyLCJpc3MiOiJodHRwOi8vMTcyLjMxLjEwLjIzOjUwMDEvIiwiaWF0IjoxNzQ4NjE4MDIyfQ.lwBCYKlLqjeKYJ8Zu3rOP1pn7HgxBH4OpdAd-jCnAXBAAeucH8PWfdCAxU92eYtKmbpw923tGj6BE1CL6vhp3qwoXKxNdEr9afDmG9U5ECJN-kNanWgBjVJ8tYkM1UdMuRm3zh-NaOlLYZQWhSvA6WOID26fB5FvcSB5DXd1wYO9pYgQBiuV5uC0VFgTSdcBVIY0SNFvyGqE8TllL8rGeHp9xj1j7h-pfgN_vUmrXNScSYvN-NO2SG6FV20K5hVhC2pn3M3jE4XwNjtGLn6jjRhm5yiSKqFgLIxwcprX-hQFTV7Kosw1owLrfv5pEfB4T9pedWfXIHC5Se3gqEYjmv4K8l4RUq6w42rAfXiABf2jRDpp5Wq2CsduTsPcglA21M5KdIZ1dBWLkUWyhd2elHfd8P5SDcGV5uZwMGiu1P62ijNRrxddUzdzhxDxRiOVQvKa-_08MhkFi6hLQXczjPKdeDV6mJ8-Hq43mEunmUQKhHomil5b0qXbF9NFYfet-ExWNCECFKOX5tH4_zGO-pMA0dCiXR9x_1TwfNQmG2LpyX1S6a36VFShTWrZFvbEq48z958quBKMA-3iE1bffxA2wSru6IPpHoYdJL4x3-A0s-hsHBhOu-2WjIAUWBIoK-5BXjjPJlwF4ZFVpkAscWOj7jlYBoP0-k6H6nKbq68"
+
+  
+    
+    init(domain: String = "https://epms.irissmart.com:7005", urlSession: URLSession = .shared) {
         self.domain = domain
         self.urlSession = urlSession
     }
@@ -61,7 +67,6 @@ class SupportTicketService: SupportTicketRequestProtocol {
               let data =  try decoder.decode([SupportTicket].self, from: data)
                 return data.first!
             } catch {
-                print("Decoding error: \(error)")
                 throw NetworkError.decodingError
             }
         case 401:
@@ -72,8 +77,54 @@ class SupportTicketService: SupportTicketRequestProtocol {
             throw NetworkError.serverError(statusCode: httpResponse.statusCode)
         }
     }
+   
     
+    func getEligiblity(docNo: String, birthdate: String, appReason: String) async throws -> ETCDataResponse {
+        let encodedDocNo = docNo.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let encodedBirthdate = birthdate.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let encodedAppReason = appReason.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+
+        let urlString = "\(domain)/api/appointment-service/appointment/step/get-eligibility-record?docNo=\(encodedDocNo)&birthdate=\(encodedBirthdate)&appReason=\(encodedAppReason)"
+
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let (data, response) = try await urlSession.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.invalidResponse
+        }
+        
+        switch httpResponse.statusCode {
+        case 200...299:
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+              do {
+                let data =  try decoder.decode(ETCDataResponse.self, from: data)
+                print(data)
+                return data
+            } catch {
+                print("Decoding error: \(error)")
+                throw NetworkError.decodingError
+            }
+            
+        case 401:
+            throw NetworkError.unauthorized
+        case 400...499:
+            
+            let errorMessage = try? JSONDecoder().decode(APIErrorResponse.self, from: data)
+            print(errorMessage)
+            throw NetworkError.serverError(statusCode: errorMessage?.code ?? 400)
+            
+        default:
+            throw NetworkError.serverError(statusCode: httpResponse.statusCode)
+        }
+    }
     
+  
       func sendMessage(
           ticketId: String,
           model:SendMessageModel
