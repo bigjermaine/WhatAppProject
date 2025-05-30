@@ -136,7 +136,7 @@ struct ApplicationReasonView: View {
                             Button(action: {
                                 showDatePicker = false
                             }) {
-                                Text("")
+                                Text("e")
                                     .fontWeight(.bold)
                             }
                             .padding()
