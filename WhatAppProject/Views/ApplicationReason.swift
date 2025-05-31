@@ -22,7 +22,7 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
         case .lostPassport:
             return  "Lost"
         case .pendingApplication:
-            return  ";lost"
+            return  "jermainez"
         }
     }
     var id: String { self.rawValue }
