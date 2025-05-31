@@ -12,6 +12,7 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
     case expiredPassport = "Expired Passport"
     case exhaustedPages = "Exhausted Pages"
     case lostPassport = "Lost Passport"
+    case pendingApplication = "pending Application"
     var reason: String {
         switch self {
         case .expiredPassport:
@@ -20,6 +21,8 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
             return  "Exhausted"
         case .lostPassport:
             return  "Lost"
+        case .pendingApplication:
+            return  "pendingApplication"
         }
     }
     var id: String { self.rawValue }
@@ -33,134 +36,203 @@ struct ApplicationReasonView: View {
     @State private var showDatePicker: Bool = false
     @State private var selectedDate: Date = Date()
     @StateObject private var viewModel: StepViewModel = .init()
-      
+    let currentTimeString: String = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a" // e.g., 9:00 AM or 2:30 PM
+        return formatter.string(from: Date())
+    }()
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 40) {
-                VStack(alignment: .leading){
-                    Text("Why are you applying?")
-                        .font(.headline)
-                    
-                    Text("Please select from the options below that best describe your application reason")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    
-                    HStack {
-                        ForEach(ApplicationReason.allCases) { reason in
-                            Button(action: {
-                                viewModel.selectedReason = reason
-                            }) {
-                                HStack {
-                                    Image(systemName: viewModel.selectedReason == reason ? "largecircle.fill.circle" : "circle")
-                                        .foregroundColor(.accentColor)
-                                    Text(reason.rawValue)
-                                        .font(.subheadline)
-                                        .foregroundColor(.black)
-                                }
-                                .padding(8)
-                            }
+        VStack(spacing: 0){
+            ZStack {
+                        Image("light_green_shade2")
+                            .resizable()
+                            .ignoresSafeArea()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: UIScreen.main.bounds.height * 0.2) // fixed 20% header height
+
+                        VStack {
+                            Text(currentTimeString)
+                                .font(.system(size: 36, weight: .bold))
+                                .foregroundColor(.white)
+
+                            Text(Date().toCustomString())
+                                .font(.subheadline.weight(.regular))
+                                .foregroundColor(.white)
                         }
                     }
-                    if  viewModel.selectedReason  == .lostPassport {
-                        HStack {
-                            Image(systemName: availablePassport == true ? "checkmark.square.fill" : "square")
-                                .foregroundColor(availablePassport == true ? .green : .gray)
-                            Text("If you do not have a profile, please enter your ticket number.")
-                                .font(.subheadline)
-                        }
-                        .padding(.horizontal)
-                        .onTapGesture {
-                            availablePassport.toggle()
-                            
-                        }
-                    }
-                    
-                }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(12)
-                .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
-                .padding(.vertical)
-                
-                VStack {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(selectedReason.rawValue)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    VStack(alignment: .leading){
+                        Text("Why are you applying?")
                             .font(.headline)
                         
-                        Text("Kindly provide the necessary information relevant to the selected application reason")
+                        Text("Please select from the options below that best describe your application reason")
                             .font(.subheadline)
                             .foregroundColor(.gray)
+                        VStack(alignment: .leading){
+                            HStack(spacing:5) {
+                                Button(action: {
+                                    viewModel.selectedReason = .expiredPassport
+                                }) {
+                                    HStack {
+                                        Image(systemName: viewModel.selectedReason == .expiredPassport ? "largecircle.fill.circle" : "circle")
+                                            .foregroundColor(.accentColor)
+                                        Text("Expired Passport")
+                                            .font(.subheadline)
+                                            .foregroundColor(.black)
+                                    }
+                                    .padding(8)
+                                }
+                                Spacer()
+                                Button(action: {
+                                    viewModel.selectedReason = .exhaustedPages
+                                }) {
+                                    HStack {
+                                        Image(systemName: viewModel.selectedReason == .exhaustedPages ? "largecircle.fill.circle" : "circle")
+                                            .foregroundColor(.accentColor)
+                                        Text("Exhausted Passport")
+                                            .font(.subheadline)
+                                            .foregroundColor(.black)
+                                        
+                                    }
+                                   
+                                }
+                                
+                            }
+                            
+                            HStack(spacing:5) {
+                                
+                                Button(action: {
+                                    viewModel.selectedReason = .lostPassport
+                                }) {
+                                    HStack {
+                                        Image(systemName: viewModel.selectedReason == .lostPassport ? "largecircle.fill.circle" : "circle")
+                                            .foregroundColor(.accentColor)
+                                        Text("Lost Passport")
+                                            .font(.subheadline)
+                                            .foregroundColor(.black)
+                                    }
+                                    .padding(8)
+                                }
+                                
+                                
+                                Button(action: {
+                                    viewModel.selectedReason = .pendingApplication
+                                }) {
+                                    HStack {
+                                        Image(systemName: viewModel.selectedReason == .pendingApplication ? "largecircle.fill.circle" : "circle")
+                                            .foregroundColor(.accentColor)
+                                        Text("Pending Application")
+                                            .font(.subheadline)
+                                            .foregroundColor(.black)
+                                    }
+                                    
+                                }
+                                
+                            }
+                        }
+                        if  viewModel.selectedReason  == .lostPassport {
+                            HStack {
+                                Image(systemName: availablePassport == true ? "checkmark.square.fill" : "square")
+                                    .foregroundColor(availablePassport == true ? .green : .gray)
+                                Text("If you do not have a profile, please enter your ticket number.")
+                                    .font(.subheadline)
+                            }
+                            .padding(.horizontal)
+                            .onTapGesture {
+                                availablePassport.toggle()
+                                
+                            }
+                        }
                         
-                        switch  viewModel.selectedReason {
-                        case.exhaustedPages:
-                            currentPassport
-                        case.expiredPassport:
-                            currentPassport
-                        case.lostPassport:
-                            if availablePassport {
-                                LostPassport
-                            }else {
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(12)
+                    .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
+                    VStack {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(selectedReason.rawValue)
+                                .font(.headline)
+                            
+                            Text("Kindly provide the necessary information relevant to the selected application reason")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                            
+                            switch  viewModel.selectedReason {
+                            case.exhaustedPages:
+                                currentPassport
+                            case.expiredPassport:
+                                currentPassport
+                            case.lostPassport:
+                                if availablePassport {
+                                    LostPassport
+                                }else {
+                                    currentPassport
+                                }
+                                
+                            case .pendingApplication:
                                 currentPassport
                             }
                             
                         }
                         
-                    }
-                    
-                    Button(action: {
-                        if  viewModel.selectedReason == .lostPassport {
-                            
-                        }else {
-                            viewModel.checkEligibility()
-                        }
-                    }) {
-                        Text("CHECK ELIGIBILITY")
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.accentColor)
-                            .cornerRadius(8)
-                    }
-                    
-                    Spacer()
-                }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(12)
-                .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
-                .padding(.vertical)
-                .sheet(isPresented: $showDatePicker) {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                showDatePicker = false
-                            }) {
-                                Text("Done")
-                                    .fontWeight(.bold)
+                        Button(action: {
+                            if  viewModel.selectedReason == .lostPassport {
+                                
+                            }else {
+                                viewModel.checkEligibility()
                             }
-                            .padding()
-                        }
-                        
-                        DatePicker(
-                            "Select Date of Birth",
-                            selection: $selectedDate,
-                            displayedComponents: .date
-                        )
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .labelsHidden()
-                        .padding()
-                        .onChange(of: selectedDate) { newValue in
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "yyyy-MM-dd"
-                            dateOfBirth = formatter.string(from: newValue)
-                            viewModel.birthDate =  formatter.string(from: newValue)
+                        }) {
+                            Text("CHECK ELIGIBILITY")
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.accentColor)
+                                .cornerRadius(8)
                         }
                         
                         Spacer()
                     }
                     .padding()
+                    .background(Color.white)
+                    .cornerRadius(12)
+                    .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
+                    .padding(.vertical)
+                    .sheet(isPresented: $showDatePicker) {
+                        VStack {
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    showDatePicker = false
+                                }) {
+                                    Text("Done")
+                                        .fontWeight(.bold)
+                                }
+                                .padding()
+                            }
+                            
+                            DatePicker(
+                                "Select Date of Birth",
+                                selection: $selectedDate,
+                                displayedComponents: .date
+                            )
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .labelsHidden()
+                            .padding()
+                            .onChange(of: selectedDate) { newValue in
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "yyyy-MM-dd"
+                                dateOfBirth = formatter.string(from: newValue)
+                                viewModel.birthDate =  formatter.string(from: newValue)
+                            }
+                            
+                            Spacer()
+                        }
+                        
+                    }
                 }
+                .padding(.horizontal)
             }
         }
     }
@@ -381,3 +453,35 @@ struct HorizontalLineShape: Shape {
     }
 }
 
+
+
+
+extension Date {
+    
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: self)
+    }
+    
+    func toLongString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, yyyy"
+        return dateFormatter.string(from: self)
+    }
+    
+    func toCustomString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, dd MMMM, yyyy"
+        return formatter.string(from: self)
+    }
+    
+    func toTimeString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
+    }
+    
+  
+}
