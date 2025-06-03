@@ -13,6 +13,7 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
     case exhaustedPages = "Exhausted Pages"
     case lostPassport = "Lost Passport"
     case pendingApplication = "pending Application"
+    
     var reason: String {
         switch self {
         case .expiredPassport:
@@ -22,7 +23,7 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
         case .lostPassport:
             return  "Lost"
         case .pendingApplication:
-            return  "jermainez"
+            return  "jerma"
         }
     }
     var id: String { self.rawValue }
@@ -103,12 +104,15 @@ struct ApplicationReasonView: View {
                             HStack(spacing:5) {
                                 
                                 Button(action: {
-                                    viewModel.selectedReason = .lostPassport
+                                    withAnimation {
+                                        viewModel.selectedReason = .lostPassport
+                                    }
+                                  
                                 }) {
                                     HStack {
                                         Image(systemName: viewModel.selectedReason == .lostPassport ? "largecircle.fill.circle" : "circle")
                                             .foregroundColor(.accentColor)
-                                        Text("Lost Passport")
+                                        Text("Lost Passpo")
                                             .font(.subheadline)
                                             .foregroundColor(.black)
                                     }
@@ -117,7 +121,9 @@ struct ApplicationReasonView: View {
                                 
                                 
                                 Button(action: {
-                                    viewModel.selectedReason = .pendingApplication
+                                    withAnimation {
+                                        viewModel.selectedReason = .pendingApplication
+                                    }
                                 }) {
                                     HStack {
                                         Image(systemName: viewModel.selectedReason == .pendingApplication ? "largecircle.fill.circle" : "circle")
@@ -154,7 +160,6 @@ struct ApplicationReasonView: View {
                         VStack(alignment: .leading, spacing: 10) {
                             Text(selectedReason.rawValue)
                                 .font(.headline)
-                            
                             Text("Kindly provide the necessary information relevant to the selected application reason")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
