@@ -10,7 +10,7 @@ import Foundation
 
 class StepViewModel:ObservableObject {
     
-    @Published var docNo:String = ""
+    @Published var docNo:String = "]]"
     @Published var birthDate:String = ""
     @Published var appReason:String = ""
     @Published var selectedReason: ApplicationReason = .expiredPassport
