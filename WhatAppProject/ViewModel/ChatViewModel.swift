@@ -200,7 +200,6 @@ class ChatViewModel: ObservableObject {
     }
     
     func handleText(_ action: TextInputArea.UserAction) {
-        
         switch action {
         case .presentPhotoPicker:
             showPhotoPicker = true
