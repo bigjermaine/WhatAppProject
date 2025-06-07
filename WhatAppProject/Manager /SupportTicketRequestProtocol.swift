@@ -253,7 +253,6 @@ class SupportTicketService: SupportTicketRequestProtocol {
               
               do {
                   let data =  try decoder.decode(SendMessageResponse.self, from: data)
-                  print(data)
                   return data
               } catch {
                   print("Decoding error: \(error)")
