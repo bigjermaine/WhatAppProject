@@ -104,7 +104,6 @@ class ChatViewModel: ObservableObject {
                     self.supportTicket = ticket
                 }
             } catch {
-              
                 await MainActor.run {
                     self.messageItem = self.placeholderMessages()
                 }
