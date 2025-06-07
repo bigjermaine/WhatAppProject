@@ -63,7 +63,7 @@ class ChatViewModel: ObservableObject {
     func checkEligibility(){
         Task{
             do {
-                let eligibility =  try await supportTicketService.getEligiblity(docNo: docNo, birthdate: birthDate, appReason: appReason)
+                let _ =  try await supportTicketService.getEligiblity(docNo: docNo, birthdate: birthDate, appReason: appReason)
                 await MainActor.run {
                     
                 }
