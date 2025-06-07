@@ -300,10 +300,8 @@ class SupportTicketService: SupportTicketRequestProtocol {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
                 let data =  try decoder.decode(PaymentLinkResponse.self, from: data)
-                print(data)
                 return data
             } catch {
-                print("Decoding error: \(error)")
                 throw NetworkError.decodingError
             }
             
