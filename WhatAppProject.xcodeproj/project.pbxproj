@@ -12,6 +12,7 @@
 		D004080C2DE75F7E0098E654 /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004080B2DE75F730098E654 /* StepViewModel.swift */; };
 		D004083E2DE9EFC60098E654 /* ETCDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004083D2DE9EFC60098E654 /* ETCDataResponse.swift */; };
 		D01BBB782DF05CE500D44366 /* StepPaymentInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01BBB772DF05CE500D44366 /* StepPaymentInstruction.swift */; };
+		D06CFCED2DF40F8200134CBA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CFCEC2DF40F8200134CBA /* Document.swift */; };
 		D0A180D42DC8D87C008D8675 /* SupportTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A180D32DC8D87C008D8675 /* SupportTicket.swift */; };
 		D0A180D72DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A180D62DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift */; };
 		D0A180D92DC8E51C008D8675 /* SendMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A180D82DC8E51C008D8675 /* SendMessageResponse.swift */; };
@@ -66,6 +67,7 @@
 		D004080B2DE75F730098E654 /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
 		D004083D2DE9EFC60098E654 /* ETCDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETCDataResponse.swift; sourceTree = "<group>"; };
 		D01BBB772DF05CE500D44366 /* StepPaymentInstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepPaymentInstruction.swift; sourceTree = "<group>"; };
+		D06CFCEC2DF40F8200134CBA /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		D0A180D32DC8D87C008D8675 /* SupportTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTicket.swift; sourceTree = "<group>"; };
 		D0A180D62DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTicketRequestProtocol.swift; sourceTree = "<group>"; };
 		D0A180D82DC8E51C008D8675 /* SendMessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageResponse.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		D0E908FA2DAEC51D004DAF3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D06CFCEC2DF40F8200134CBA /* Document.swift */,
 				D0A181A22DCA25B3008D8675 /* GatewayResponse.swift */,
 				D004083D2DE9EFC60098E654 /* ETCDataResponse.swift */,
 				D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */,
@@ -425,6 +428,7 @@
 				D0E9090B2DAEC51D004DAF3B /* TextInputArea.swift in Sources */,
 				D0E9090C2DAEC51D004DAF3B /* BubbleModifier.swift in Sources */,
 				D0E9090D2DAEC51D004DAF3B /* MessageItem.swift in Sources */,
+				D06CFCED2DF40F8200134CBA /* Document.swift in Sources */,
 				D004083E2DE9EFC60098E654 /* ETCDataResponse.swift in Sources */,
 				D0A181012DC91700008D8675 /* BookingDetailsView.swift in Sources */,
 				D0A181CD2DCA3390008D8675 /* PaymentLinkResponse.swift in Sources */,
