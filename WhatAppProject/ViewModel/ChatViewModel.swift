@@ -132,11 +132,8 @@ class ChatViewModel: ObservableObject {
         isLoading =  true
         Task {
             do {
-                
                 guard let paymentRequest = paymentRequest else {return}
-                print(paymentRequest)
                 let ticket = try await supportTicketService.initiatePayment(payment: paymentRequest)
-                print(ticket)
                 isLoading =  false
                 await MainActor.run {
                     link =  ticket.data.link
