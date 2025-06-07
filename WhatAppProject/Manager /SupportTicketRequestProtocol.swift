@@ -278,8 +278,6 @@ class SupportTicketService: SupportTicketRequestProtocol {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        
         let requestBody = payment
         
         let encoder = JSONEncoder()
