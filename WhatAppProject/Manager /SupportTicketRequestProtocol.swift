@@ -207,7 +207,6 @@ class SupportTicketService: SupportTicketRequestProtocol {
         case 400...499:
             
             let errorMessage = try? JSONDecoder().decode(APIErrorResponse.self, from: data)
-            print(errorMessage)
             throw NetworkError.serverError(statusCode: errorMessage?.code ?? 400)
             
         default:
