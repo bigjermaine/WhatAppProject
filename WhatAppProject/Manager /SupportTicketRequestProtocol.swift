@@ -112,13 +112,52 @@ class SupportTicketService: SupportTicketRequestProtocol {
         case 400...499:
             
             let errorMessage = try? JSONDecoder().decode(APIErrorResponse.self, from: data)
-            print(errorMessage)
             throw NetworkError.serverError(statusCode: errorMessage?.code ?? 400)
             
         default:
             throw NetworkError.serverError(statusCode: httpResponse.statusCode)
         }
     }
+    func uploadDocumentTypes(docomnets:DocumentList) async throws -> DocumentList {
+        let urlString = "\(domain)/api/document-service/document/create-documents"
+        
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let (data, response) = try await urlSession.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.invalidResponse
+        }
+        
+        switch httpResponse.statusCode {
+        case 200...299:
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+              do {
+                let data =  try decoder.decode(DocumentList.self, from: data)
+                return data
+            } catch {
+                print("Decoding error: \(error)")
+                throw NetworkError.decodingError
+            }
+            
+        case 401:
+            throw NetworkError.unauthorized
+        case 400...499:
+            
+            let errorMessage = try? JSONDecoder().decode(APIErrorResponse.self, from: data)
+            throw NetworkError.serverError(statusCode: errorMessage?.code ?? 400)
+            
+        default:
+            throw NetworkError.serverError(statusCode: httpResponse.statusCode)
+        }
+    }
+   
    
     
     func getEligiblity(docNo: String, birthdate: String, appReason: String) async throws -> ETCDataResponse {
