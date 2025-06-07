@@ -229,10 +229,7 @@ class SupportTicketService: SupportTicketRequestProtocol {
           request.httpMethod = "POST"
           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
           request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-          
-          
           let requestBody = model
-          
           let encoder = JSONEncoder()
           encoder.keyEncodingStrategy = .convertToSnakeCase
           request.httpBody = try encoder.encode(requestBody)
