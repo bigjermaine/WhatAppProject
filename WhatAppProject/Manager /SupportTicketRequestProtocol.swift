@@ -138,7 +138,7 @@ class SupportTicketService: SupportTicketRequestProtocol {
             encoder.keyEncodingStrategy = .convertToSnakeCase // If your backend expects snake_case
             request.httpBody = try encoder.encode(documents)
         } catch {
-            print("Encoding error: \(error)")
+          
            
         }
         
