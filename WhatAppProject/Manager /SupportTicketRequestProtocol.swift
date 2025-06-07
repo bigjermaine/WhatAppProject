@@ -155,7 +155,6 @@ class SupportTicketService: SupportTicketRequestProtocol {
                 let responseData = try decoder.decode(DocumentList.self, from: data)
                 return responseData
             } catch {
-                print("Decoding error: \(error)")
                 throw NetworkError.decodingError
             }
             
@@ -196,7 +195,7 @@ class SupportTicketService: SupportTicketRequestProtocol {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
               do {
                 let data =  try decoder.decode(ETCDataResponse.self, from: data)
-                print(data)
+        
                 return data
             } catch {
                 print("Decoding error: \(error)")
