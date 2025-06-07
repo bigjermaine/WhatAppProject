@@ -19,6 +19,7 @@ protocol SupportTicketRequestProtocol {
     func getPayments() async throws -> GatewayResponse
     func initiatePayment(payment:PaymentRequest) async throws -> PaymentLinkResponse
     func getEligiblity(docNo: String, birthdate: String, appReason: String)  async throws -> ETCDataResponse
+    
 }
 
 // MARK: - Service Implementation
@@ -76,6 +77,17 @@ class SupportTicketService: SupportTicketRequestProtocol {
         default:
             throw NetworkError.serverError(statusCode: httpResponse.statusCode)
         }
+    }
+    
+    func getDocumentTypes() async throws -> DocumentTypeResponse {
+        let urlString = "\(domain)/api/document-service/document/get-by-regno"
+        
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
     }
    
     
