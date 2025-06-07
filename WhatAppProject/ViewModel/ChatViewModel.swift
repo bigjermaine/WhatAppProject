@@ -104,8 +104,7 @@ class ChatViewModel: ObservableObject {
                     self.supportTicket = ticket
                 }
             } catch {
-                print("Error loading support ticket messages: \(error.localizedDescription)")
-                // Fallback to placeholder messages if API fails
+              
                 await MainActor.run {
                     self.messageItem = self.placeholderMessages()
                 }
