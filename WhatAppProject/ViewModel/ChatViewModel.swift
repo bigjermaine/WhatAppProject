@@ -79,7 +79,6 @@ class ChatViewModel: ObservableObject {
         
         // Load immediately
         loadSupportTicketMessages(ticketNo: "306-4558E411-7431")
-        
         // Then poll every 5 seconds
         messagePollingTimer = Timer.scheduledTimer(
             withTimeInterval: 5.0,
