@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Request Protocol
+
 protocol SupportTicketRequestProtocol {
     func fetchSupportTicket(byTicketNo ticketNo: String) async throws -> SupportTicket
     
@@ -19,6 +19,8 @@ protocol SupportTicketRequestProtocol {
     func getPayments() async throws -> GatewayResponse
     func initiatePayment(payment:PaymentRequest) async throws -> PaymentLinkResponse
     func getEligiblity(docNo: String, birthdate: String, appReason: String)  async throws -> ETCDataResponse
+    func getDocumentTypes() async throws -> DocumentList
+    func uploadDocumentTypes(documents: DocumentList) async throws -> DocumentList
     
 }
 
