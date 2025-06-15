@@ -30,7 +30,7 @@ class SupportTicketService: SupportTicketRequestProtocol {
     
     private let domain: String
     private let urlSession: URLSession
-    let  token = ""
+    lettoken = ""
 
   
     
