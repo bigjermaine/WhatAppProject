@@ -41,7 +41,7 @@ class MarketPlaceImageCell: UICollectionViewCell {
         guard let url = URL(string: imageUrl) else {
             return
         }
-       
+        imageView.sd_setImage(with: url)
     }
 }
 

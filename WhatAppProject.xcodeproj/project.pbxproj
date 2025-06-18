@@ -39,9 +39,6 @@
 		D0E9091D2DAEEE6E004DAF3B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9091C2DAEEE6E004DAF3B /* Extension.swift */; };
 		D0E909E92DB169F6004DAF3B /* MediaAttachmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */; };
 		D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */; };
-		D0E90ABE2DB2DBD6004DAF3B /* WhatAppProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */; };
-		D0E90AC22DB2DBDB004DAF3B /* WhatAppProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */; };
-		D0E90AC32DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */; };
 		D0FEB2D22E01E0E800442430 /* MarketPlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */; };
 		D0FEB2D42E01F09500442430 /* SelectHotelRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */; };
 		D0FEB2D72E026B9100442430 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D0FEB2D62E026B9100442430 /* SDWebImage */; };
@@ -104,9 +101,6 @@
 		D0E9091C2DAEEE6E004DAF3B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAttachmentPreview.swift; sourceTree = "<group>"; };
 		D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaImageModel.swift; sourceTree = "<group>"; };
-		D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectTests.swift; sourceTree = "<group>"; };
-		D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectUITests.swift; sourceTree = "<group>"; };
-		D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceImageCell.swift; sourceTree = "<group>"; };
 		D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHotelRoomCell.swift; sourceTree = "<group>"; };
 		D0FEB2DA2E026BC500442430 /* MarketPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaces.swift; sourceTree = "<group>"; };
@@ -166,8 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				D0E909042DAEC51D004DAF3B /* WhatAppProject */,
-				D0E90ABD2DB2DBD6004DAF3B /* WhatAppProjectTests */,
-				D0E90AC12DB2DBDB004DAF3B /* WhatAppProjectUITests */,
 				D0E908AD2DAEBB2B004DAF3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -274,23 +266,6 @@
 				D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */,
 			);
 			path = Chat;
-			sourceTree = "<group>";
-		};
-		D0E90ABD2DB2DBD6004DAF3B /* WhatAppProjectTests */ = {
-			isa = PBXGroup;
-			children = (
-				D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */,
-			);
-			path = WhatAppProjectTests;
-			sourceTree = "<group>";
-		};
-		D0E90AC12DB2DBDB004DAF3B /* WhatAppProjectUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */,
-				D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */,
-			);
-			path = WhatAppProjectUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,7 +451,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0E90ABE2DB2DBD6004DAF3B /* WhatAppProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,8 +458,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0E90AC22DB2DBDB004DAF3B /* WhatAppProjectUITests.swift in Sources */,
-				D0E90AC32DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

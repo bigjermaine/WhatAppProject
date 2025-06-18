@@ -12,7 +12,7 @@ import SwiftUI
 
 class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
-  static let identifier = "RestaurantTableViewCell"
+  static let identifier = "SelectHotelRoomCell"
   
   var likeButtonAction: (() -> Void)?
   
@@ -94,6 +94,7 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
   var titleLabel: UILabel = {
       let label = UILabel()
       label.numberOfLines = 1
+      label.text = "Ocean view suite"
       label.translatesAutoresizingMaskIntoConstraints = false
       return label
   }()
@@ -115,13 +116,24 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
       return label
   }()
   
-  var timeImageView: UIImageView = {
+  var galleryImageView: UIImageView = {
       let imageView = UIImageView()
       imageView.contentMode = .scaleAspectFill
+      imageView.image = UIImage(systemName: "person")
       imageView.clipsToBounds = true
       imageView.translatesAutoresizingMaskIntoConstraints = false
       return imageView
   }()
+    
+    var galleryLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.text = "View gallery"
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
   
   var locationImageView: UIImageView = {
       let imageView = UIImageView()
@@ -150,16 +162,7 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
       imageView.translatesAutoresizingMaskIntoConstraints = false
       return imageView
   }()
-  
-  let headerLabel: UILabel = {
-      let label = UILabel()
-      label.textColor = .black
-      label.textAlignment = .left
-      label.text = "Restaurants in this location"
-      label.numberOfLines = 0
-      label.translatesAutoresizingMaskIntoConstraints = false
-      return label
-  }()
+
   
   let cultleryImageView: UIImageView = {
       let imageView = UIImageView()
@@ -196,9 +199,6 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
   private let contentContainerView: UIView = {
       let view = UIView()
       view.translatesAutoresizingMaskIntoConstraints = false
-      view.layer.borderWidth = 1
-      view.layer.cornerRadius = 4
-      view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
       view.clipsToBounds = true
       return view
   }()
@@ -230,12 +230,10 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-   
       setupCollectionView()
       addsubViews()
       configureHorizontalCollectionView()
       setupActions()
-      likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
       reserveButton.addTarget(self, action: #selector(didTapReserve), for: .touchUpInside)
   }
   
@@ -251,25 +249,24 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
      }
   
   func addsubViews() {
-      contentView.addSubview(headerLabel)
       contentView.addSubview(horinzontalCollectionView)
-      contentView.addSubview(likeBackgroundView)
-      contentView.addSubview(likeButton)
       contentView.addSubview(controlBackgroundView)
       contentView.addSubview(backButton)
       contentView.addSubview(fowardButton)
       contentView.addSubview(contentContainerView)
       contentView.addSubview(titleLabel)
-      contentView.addSubview(statusLabel)
-      contentView.addSubview(descriptionLabel)
-      contentView.addSubview(placeIconImageView)
-      contentView.addSubview(countryLabel)
-      contentView.addSubview(ratingLabel)
-      contentView.addSubview(moneyLabel)
-      contentView.addSubview(reserveButton)
-      contentView.addSubview(timeImageView)
-      contentView.addSubview(locationImageView)
-      contentView.addSubview(ratingImageView)
+      contentView.addSubview(galleryImageView)
+      contentView.addSubview(galleryLabel)
+//      contentView.addSubview(statusLabel)
+//      contentView.addSubview(descriptionLabel)
+//      contentView.addSubview(placeIconImageView)
+//      contentView.addSubview(countryLabel)
+//      contentView.addSubview(ratingLabel)
+//      contentView.addSubview(moneyLabel)
+//      contentView.addSubview(reserveButton)
+//      contentView.addSubview(timeImageView)
+//      contentView.addSubview(locationImageView)
+//      contentView.addSubview(ratingImageView)
       
   }
   
@@ -280,28 +277,12 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
   
   func configureHorizontalCollectionView() {
       NSLayoutConstraint.activate([
-          
-          headerLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-          headerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-          headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-          
-          
-          horinzontalCollectionView.topAnchor.constraint(equalTo:headerLabel.bottomAnchor, constant: 16),
+          horinzontalCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
           horinzontalCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
           horinzontalCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-          horinzontalCollectionView.heightAnchor.constraint(equalToConstant: 272),
+          horinzontalCollectionView.heightAnchor.constraint(equalToConstant: 206),
           
-          likeBackgroundView.topAnchor.constraint(equalTo: horinzontalCollectionView.topAnchor,constant: 20),
-          likeBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -35),
-          likeBackgroundView.widthAnchor.constraint(equalToConstant: 46),
-          likeBackgroundView.heightAnchor.constraint(equalToConstant: 46),
-          
-          likeButton.widthAnchor.constraint(equalToConstant: 21),
-          likeButton.centerXAnchor.constraint(equalTo: likeBackgroundView.centerXAnchor),
-          likeButton.centerYAnchor.constraint(equalTo: likeBackgroundView.centerYAnchor),
-          likeButton.heightAnchor.constraint(equalToConstant: 18),
-          
-  
+        
           controlBackgroundView.bottomAnchor.constraint(equalTo:horinzontalCollectionView.bottomAnchor,constant:-18),
           controlBackgroundView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor,constant:0),
           controlBackgroundView.widthAnchor.constraint(equalToConstant: 132),
@@ -317,7 +298,6 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
           fowardButton.heightAnchor.constraint(equalToConstant: 32),
           fowardButton.centerYAnchor.constraint(equalTo: controlBackgroundView.centerYAnchor),
           
-          contentContainerView.topAnchor.constraint(equalTo: horinzontalCollectionView.bottomAnchor, constant: 0),
           contentContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
           contentContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
           contentContainerView.heightAnchor.constraint(equalToConstant: 180),
@@ -325,55 +305,56 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
 
           titleLabel.topAnchor.constraint(equalTo:contentContainerView.topAnchor, constant: 14),
           titleLabel.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant:12),
-          titleLabel.trailingAnchor.constraint(equalTo: timeImageView.leadingAnchor, constant: -10),
+          titleLabel.trailingAnchor.constraint(equalTo: contentContainerView.centerXAnchor, constant: -10),
           
-          
-          timeImageView.centerYAnchor.constraint(equalTo:statusLabel.centerYAnchor, constant: 0),
-          timeImageView.heightAnchor.constraint(equalToConstant: 12),
-          timeImageView.widthAnchor.constraint(equalToConstant: 12),
-          timeImageView.trailingAnchor.constraint(equalTo: statusLabel.leadingAnchor,constant:-5.12),
-          
-          
-          statusLabel.topAnchor.constraint(equalTo:horinzontalCollectionView.bottomAnchor, constant: 14),
-          statusLabel.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
-          statusLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10),
-          
-          locationImageView.centerYAnchor.constraint(equalTo: descriptionLabel.centerYAnchor),
-          locationImageView.heightAnchor.constraint(equalToConstant: 32),
-          locationImageView.widthAnchor.constraint(equalToConstant: 32),
-          locationImageView.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant:12),
-          
-          descriptionLabel.topAnchor.constraint(equalTo:titleLabel.bottomAnchor, constant: 11),
-          descriptionLabel.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
-          descriptionLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 10),
-          placeIconImageView.centerYAnchor.constraint(equalTo:countryLabel.centerYAnchor, constant: 0),
-          
-          placeIconImageView.heightAnchor.constraint(equalToConstant: 14),
-          placeIconImageView.widthAnchor.constraint(equalToConstant: 14),
-          placeIconImageView.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant:12),
-          placeIconImageView.centerYAnchor.constraint(equalTo:ratingLabel.centerYAnchor, constant: 0),
-          
-          countryLabel.topAnchor.constraint(equalTo:descriptionLabel.bottomAnchor, constant: 11),
-          countryLabel.trailingAnchor.constraint(equalTo: ratingImageView.leadingAnchor, constant:-3),
-          countryLabel.leadingAnchor.constraint(equalTo: placeIconImageView.trailingAnchor, constant: 4),
+          galleryImageView.centerYAnchor.constraint(equalTo:galleryLabel.centerYAnchor),
+          galleryImageView.heightAnchor.constraint(equalToConstant: 12),
+          galleryImageView.widthAnchor.constraint(equalToConstant: 12),
+          galleryImageView.trailingAnchor.constraint(equalTo: galleryLabel.leadingAnchor,constant: -2),
+
+          galleryLabel.topAnchor.constraint(equalTo:contentContainerView.topAnchor, constant: 14),
+          galleryLabel.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
+          galleryLabel.leadingAnchor.constraint(equalTo: galleryImageView.trailingAnchor, constant: 2),
       
-          ratingImageView.centerYAnchor.constraint(equalTo:ratingLabel.centerYAnchor, constant: 0),
-          ratingImageView.heightAnchor.constraint(equalToConstant: 16),
-          ratingImageView.widthAnchor.constraint(equalToConstant: 16),
-          ratingImageView.trailingAnchor.constraint(equalTo: ratingLabel.leadingAnchor, constant:-4),
           
-          ratingLabel.topAnchor.constraint(equalTo:descriptionLabel.bottomAnchor, constant: 11),
-          ratingLabel.trailingAnchor.constraint(equalTo: moneyLabel.leadingAnchor, constant:-4),
-          ratingLabel.leadingAnchor.constraint(equalTo: ratingImageView.trailingAnchor, constant: 4),
-          
-          moneyLabel.topAnchor.constraint(equalTo:descriptionLabel.bottomAnchor, constant: 11),
-          moneyLabel.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
-          moneyLabel.widthAnchor.constraint(equalToConstant: 48),
-          
-          reserveButton.topAnchor.constraint(equalTo:ratingImageView.bottomAnchor, constant: 11),
-          reserveButton.heightAnchor.constraint(equalToConstant: 48),
-          reserveButton.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
-          reserveButton.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant:12),
+         
+//          
+//          locationImageView.centerYAnchor.constraint(equalTo: descriptionLabel.centerYAnchor),
+//          locationImageView.heightAnchor.constraint(equalToConstant: 32),
+//          locationImageView.widthAnchor.constraint(equalToConstant: 32),
+//          locationImageView.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant:12),
+//          
+//          descriptionLabel.topAnchor.constraint(equalTo:titleLabel.bottomAnchor, constant: 11),
+//          descriptionLabel.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
+//          descriptionLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 10),
+//          placeIconImageView.centerYAnchor.constraint(equalTo:countryLabel.centerYAnchor, constant: 0),
+//          
+//          placeIconImageView.heightAnchor.constraint(equalToConstant: 14),
+//          placeIconImageView.widthAnchor.constraint(equalToConstant: 14),
+//          placeIconImageView.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant:12),
+//          placeIconImageView.centerYAnchor.constraint(equalTo:ratingLabel.centerYAnchor, constant: 0),
+//          
+//          countryLabel.topAnchor.constraint(equalTo:descriptionLabel.bottomAnchor, constant: 11),
+//          countryLabel.trailingAnchor.constraint(equalTo: ratingImageView.leadingAnchor, constant:-3),
+//          countryLabel.leadingAnchor.constraint(equalTo: placeIconImageView.trailingAnchor, constant: 4),
+//      
+//          ratingImageView.centerYAnchor.constraint(equalTo:ratingLabel.centerYAnchor, constant: 0),
+//          ratingImageView.heightAnchor.constraint(equalToConstant: 16),
+//          ratingImageView.widthAnchor.constraint(equalToConstant: 16),
+//          ratingImageView.trailingAnchor.constraint(equalTo: ratingLabel.leadingAnchor, constant:-4),
+//          
+//          ratingLabel.topAnchor.constraint(equalTo:descriptionLabel.bottomAnchor, constant: 11),
+//          ratingLabel.trailingAnchor.constraint(equalTo: moneyLabel.leadingAnchor, constant:-4),
+//          ratingLabel.leadingAnchor.constraint(equalTo: ratingImageView.trailingAnchor, constant: 4),
+//          
+//          moneyLabel.topAnchor.constraint(equalTo:descriptionLabel.bottomAnchor, constant: 11),
+//          moneyLabel.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
+//          moneyLabel.widthAnchor.constraint(equalToConstant: 48),
+//          
+//          reserveButton.topAnchor.constraint(equalTo:ratingImageView.bottomAnchor, constant: 11),
+//          reserveButton.heightAnchor.constraint(equalToConstant: 48),
+//          reserveButton.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant:-12),
+//          reserveButton.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant:12),
 
       ])
   }
@@ -395,8 +376,6 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
       descriptionLabel.text = viewModel.vendorAccount.businessAddress
       ratingLabel.text = "\(viewModel.averageRating ?? 0) (\(viewModel.noOfRatings ?? 0)) ."
       titleLabel.text = viewModel.vendorAccount.businessName
-   
-
       configurePriceRange(viewModel.vendorAccount.restaurantPriceRange)
       currentImageIndex = 0
       updateButtons()
@@ -427,7 +406,6 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
       moneyLabel.text = price
   }
 
-  
   private func updateButtons() {
       backButton.isEnabled = currentImageIndex > 0
       fowardButton.isEnabled = currentImageIndex < imagesGallery.count - 1
@@ -435,19 +413,19 @@ class SelectHotelRoomCell: UITableViewCell, UICollectionViewDataSource, UICollec
   
   // UICollectionView DataSource and Delegate Methods
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return imagesGallery.count
+      return 4
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+      return CGSize(width: collectionView.frame.width, height: 206)
   }
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantImageCell", for: indexPath) as? MarketPlaceImageCell else {return UICollectionViewCell()}
-      cell.configure(imageUrl: imagesGallery[indexPath.row].imageURL)
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantImageCell", for: indexPath)  as? MarketPlaceImageCell else {return UICollectionViewCell()}
+      cell.configure(imageUrl: "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg")
       return cell
   }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      // Handle Image Tap
+    
   }
   
   @objc private func previousButtonAction() {
