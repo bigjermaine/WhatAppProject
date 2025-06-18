@@ -42,6 +42,12 @@
 		D0E90ABE2DB2DBD6004DAF3B /* WhatAppProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */; };
 		D0E90AC22DB2DBDB004DAF3B /* WhatAppProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */; };
 		D0E90AC32DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */; };
+		D0FEB2D22E01E0E800442430 /* MarketPlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */; };
+		D0FEB2D42E01F09500442430 /* SelectHotelRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */; };
+		D0FEB2D72E026B9100442430 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D0FEB2D62E026B9100442430 /* SDWebImage */; };
+		D0FEB2D92E026B9100442430 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0FEB2D82E026B9100442430 /* SDWebImageMapKit */; };
+		D0FEB2DB2E026BC500442430 /* MarketPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2DA2E026BC500442430 /* MarketPlaces.swift */; };
+		D0FEB2DD2E026C1F00442430 /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2DC2E026C1F00442430 /* ViewControllerPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +107,10 @@
 		D0E90ABC2DB2DBD6004DAF3B /* WhatAppProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectTests.swift; sourceTree = "<group>"; };
 		D0E90ABF2DB2DBDB004DAF3B /* WhatAppProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectUITests.swift; sourceTree = "<group>"; };
 		D0E90AC02DB2DBDB004DAF3B /* WhatAppProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAppProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceImageCell.swift; sourceTree = "<group>"; };
+		D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHotelRoomCell.swift; sourceTree = "<group>"; };
+		D0FEB2DA2E026BC500442430 /* MarketPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaces.swift; sourceTree = "<group>"; };
+		D0FEB2DC2E026C1F00442430 /* ViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FEB2D92E026B9100442430 /* SDWebImageMapKit in Frameworks */,
+				D0FEB2D72E026B9100442430 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				D00407DA2DE741840098E654 /* StepView.swift */,
+				D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */,
+				D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */,
+				D0FEB2DC2E026C1F00442430 /* ViewControllerPreview.swift */,
 				D01BBB772DF05CE500D44366 /* StepPaymentInstruction.swift */,
 				D00407DC2DE758030098E654 /* ApplicationReason.swift */,
 				D004080B2DE75F730098E654 /* StepViewModel.swift */,
@@ -193,6 +208,7 @@
 		D0E908FA2DAEC51D004DAF3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D0FEB2DA2E026BC500442430 /* MarketPlaces.swift */,
 				D06CFCEC2DF40F8200134CBA /* Document.swift */,
 				D0A181A22DCA25B3008D8675 /* GatewayResponse.swift */,
 				D004083D2DE9EFC60098E654 /* ETCDataResponse.swift */,
@@ -294,6 +310,8 @@
 			);
 			name = WhatAppProject;
 			packageProductDependencies = (
+				D0FEB2D62E026B9100442430 /* SDWebImage */,
+				D0FEB2D82E026B9100442430 /* SDWebImageMapKit */,
 			);
 			productName = WhatAppProject;
 			productReference = D0E908AC2DAEBB2B004DAF3B /* WhatAppProject.app */;
@@ -371,6 +389,9 @@
 			);
 			mainGroup = D0E908A32DAEBB2B004DAF3B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D0FEB2D52E026B9100442430 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D0E908AD2DAEBB2B004DAF3B /* Products */;
 			projectDirPath = "";
@@ -420,12 +441,16 @@
 				D00407DB2DE741840098E654 /* StepView.swift in Sources */,
 				D0E909082DAEC51D004DAF3B /* BubbleImageView.swift in Sources */,
 				D0A181512DCA1F0F008D8675 /* PassportPaymentView.swift in Sources */,
+				D0FEB2D22E01E0E800442430 /* MarketPlaceImageCell.swift in Sources */,
 				D0E909092DAEC51D004DAF3B /* BubbleTailView.swift in Sources */,
 				D0A181CF2DCA406E008D8675 /* PaymentWebView.swift in Sources */,
+				D0FEB2DD2E026C1F00442430 /* ViewControllerPreview.swift in Sources */,
 				D01BBB782DF05CE500D44366 /* StepPaymentInstruction.swift in Sources */,
 				D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */,
 				D0E9090A2DAEC51D004DAF3B /* BubbleTextView.swift in Sources */,
+				D0FEB2DB2E026BC500442430 /* MarketPlaces.swift in Sources */,
 				D0E9090B2DAEC51D004DAF3B /* TextInputArea.swift in Sources */,
+				D0FEB2D42E01F09500442430 /* SelectHotelRoomCell.swift in Sources */,
 				D0E9090C2DAEC51D004DAF3B /* BubbleModifier.swift in Sources */,
 				D0E9090D2DAEC51D004DAF3B /* MessageItem.swift in Sources */,
 				D06CFCED2DF40F8200134CBA /* Document.swift in Sources */,
@@ -764,6 +789,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D0FEB2D52E026B9100442430 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0FEB2D62E026B9100442430 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0FEB2D52E026B9100442430 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		D0FEB2D82E026B9100442430 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0FEB2D52E026B9100442430 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0E908A42DAEBB2B004DAF3B /* Project object */;
 }
