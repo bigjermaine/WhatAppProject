@@ -14,6 +14,8 @@ class StepViewModel:ObservableObject {
     @Published var birthDate:String = ""
     @Published var appReason:String = ""
     @Published var selectedReason: ApplicationReason = .expiredPassport
+    @Published var ageGroup:AgeGroup = .adult
+    @Published  var enrollmentMethod: EnrollmentMethod = .none
     private let supportTicketService: SupportTicketRequestProtocol =  SupportTicketService()
     
     func checkEligibility(){
