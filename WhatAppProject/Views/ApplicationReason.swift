@@ -111,7 +111,7 @@ struct ApplicationReasonView: View {
                                     viewModel.checkEligibility()
                                 }
                             }) {
-                                Text("CHECK ELIGIBILITY")
+                                Text("CHEqCK ELIGIBILITY")
                                     .foregroundColor(.white)
                                     .frame(maxWidth: .infinity)
                                     .padding()
