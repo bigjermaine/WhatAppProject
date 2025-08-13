@@ -176,7 +176,7 @@ extension ApplicationReasonView {
         VStack(alignment: .leading, spacing: 10) {
             Text(selectedReason.rawValue)
                 .font(.headline)
-            Text("Kindly provide the necessary information relevant to the selected application ")
+            Text("Kindly provide the necessary information relevant to the selected application number ")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             switch  viewModel.selectedReason {
