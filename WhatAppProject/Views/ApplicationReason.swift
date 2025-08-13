@@ -227,7 +227,7 @@ extension ApplicationReasonView {
                    HStack {
                        Image(systemName: viewModel.enrollmentMethod == .embassyAssisted ? "largecircle.fill.circle" : "circle")
                            .foregroundColor(.accentColor)
-                       Text("Embassy Asisted")
+                       Text("Embassy Asisted...")
                            .font(.subheadline)
                            .foregroundColor(.black)
                        
