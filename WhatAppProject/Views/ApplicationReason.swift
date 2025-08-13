@@ -39,7 +39,7 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
         case .lostPassport:
             return  "Lost"
         case .pendingApplication:
-            return  "pendingApplication"
+            return  "pendingA"
         }
     }
     var id: String { self.rawValue }
