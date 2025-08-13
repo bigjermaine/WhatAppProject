@@ -210,7 +210,7 @@ extension ApplicationReasonView {
                    HStack {
                        Image(systemName: viewModel.enrollmentMethod ==  .selfEnrollment ? "largecircle.fill.circle" : "circle")
                            .foregroundColor(.accentColor)
-                       Text("Self Enrollment")
+                       Text("Self Enrollment..")
                            .fixedSize(horizontal: true, vertical: true)
                            .font(.subheadline)
                            .foregroundColor(.black)
