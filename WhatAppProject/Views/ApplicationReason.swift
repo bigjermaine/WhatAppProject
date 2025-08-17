@@ -20,6 +20,7 @@ enum AgeGroup: String, CaseIterable {
     case adult = "Adult (above 17yrs)"
     case minor6to17 = "Minor (6 – 17yrs)"
     case minor0to5 = "Minor (0 – 5yrs)"
+    case none = "none"
    
 }
 
