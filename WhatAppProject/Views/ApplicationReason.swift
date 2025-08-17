@@ -376,6 +376,54 @@ extension ApplicationReasonView {
         }
     }
     
+    var embassyAsistedPassport:some View {
+        VStack(alignment: .leading){
+            VStack(alignment: .leading,spacing: 10){
+                TextFieldWithBottomLine(placeholder: "Current Passport No", text:  $viewModel.docNo)
+            }
+            VStack(alignment: .leading,spacing: 10){
+                TextFieldWithBottomLine(
+                    placeholder: "Date of Birth (YYYY-MM-DD)",
+                    text: Binding(
+                        get: { dateOfBirth },
+                        set: { _ in
+                            
+                            
+                        }
+                    )
+                )
+                .disabled(true)
+                .onTapGesture {
+                    showDatePicker = true
+                }
+                
+            }
+        }
+    }
+    var pendingApplicationPassport:some View {
+        VStack(alignment: .leading){
+            VStack(alignment: .leading,spacing: 10){
+                TextFieldWithBottomLine(placeholder: "Current Passport No", text:  $viewModel.docNo)
+            }
+            VStack(alignment: .leading,spacing: 10){
+                TextFieldWithBottomLine(
+                    placeholder: "Date of Birth (YYYY-MM-DD)",
+                    text: Binding(
+                        get: { dateOfBirth },
+                        set: { _ in
+                            
+                            
+                        }
+                    )
+                )
+                .disabled(true)
+                .onTapGesture {
+                    showDatePicker = true
+                }
+                
+            }
+        }
+    }
     var LostPassport:some View {
         VStack(alignment: .leading){
             VStack(alignment: .leading,spacing: 10){
