@@ -97,7 +97,7 @@ struct ApplicationReasonView: View {
                     .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
                     .padding(.horizontal)
                     topPickerView
-                    pickerView
+                    agePickerView
                         .padding()
                         .background(Color.white)
                         .cornerRadius(12)
@@ -229,6 +229,7 @@ extension ApplicationReasonView {
                        Image(systemName: viewModel.enrollmentMethod == .embassyAssisted ? "largecircle.fill.circle" : "circle")
                            .foregroundColor(.accentColor)
                        Text("Embassy Asisted...")
+                           .fixedSize(horizontal: true, vertical: true)
                            .font(.subheadline)
                            .foregroundColor(.black)
                        
@@ -239,11 +240,11 @@ extension ApplicationReasonView {
            HStack{
                Button(action: {
                    withAnimation {
-                       viewModel.enrollmentMethod = .embassyAssisted
+                       viewModel.enrollmentMethod = .pendingApproval
                    }
                }) {
                    HStack {
-                       Image(systemName: viewModel.enrollmentMethod == .embassyAssisted ? "largecircle.fill.circle" : "circle")
+                       Image(systemName: viewModel.enrollmentMethod == .pendingApproval ? "largecircle.fill.circle" : "circle")
                            .foregroundColor(.accentColor)
                        Text("Pending Application")
                            .fixedSize(horizontal: true, vertical: true)
@@ -277,7 +278,7 @@ extension ApplicationReasonView {
        .padding()
      
     }
-    var pickerView :some View {
+    var agePickerView :some View {
         VStack(alignment: .leading){
             
             HStack(spacing:5) {
@@ -425,6 +426,34 @@ extension ApplicationReasonView {
         }
     }
     var LostPassport:some View {
+        VStack(alignment: .leading){
+            VStack(alignment: .leading,spacing: 10){
+                Text("Lastname")
+                    .font(.subheadline)
+                
+                TextFieldWithBottomLine(placeholder: "Lastname", text:  $viewModel.docNo)
+            }
+            VStack(alignment: .leading,spacing: 10){
+              
+                TextFieldWithBottomLine(
+                    placeholder: "Date of Birth (YYYY-MM-DD)",
+                    text: Binding(
+                        get: { dateOfBirth },
+                        set: { _ in
+                         
+                        } // disables manual typing
+                    )
+                )
+                .disabled(true)
+                .onTapGesture {
+                    showDatePicker = true
+                }
+                
+            }
+            }
+        }
+    
+    var LostPassportWithOutDocNumber:some View {
         VStack(alignment: .leading){
             VStack(alignment: .leading,spacing: 10){
                 Text("Lastname")

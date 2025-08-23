@@ -143,7 +143,6 @@
 				D0FEB2DC2E026C1F00442430 /* ViewControllerPreview.swift */,
 				D01BBB772DF05CE500D44366 /* StepPaymentInstruction.swift */,
 				D00407DC2DE758030098E654 /* ApplicationReason.swift */,
-				D004080B2DE75F730098E654 /* StepViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E909142DAEC52F004DAF3B /* ChatViewModel.swift */,
+				D004080B2DE75F730098E654 /* StepViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
