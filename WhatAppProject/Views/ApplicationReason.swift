@@ -15,7 +15,6 @@ enum EnrollmentMethod: String, CaseIterable {
     case pendingApproval = "Pending Approval"
     case requestedReprint = "Requested Reprint"
 }
-
 enum AgeGroup: String, CaseIterable {
     case adult = "Adult (above 17yrs)"
     case minor6to17 = "Minor (6 – 17yrs)"
@@ -23,14 +22,13 @@ enum AgeGroup: String, CaseIterable {
     case none = "none"
    
 }
-
-
 enum ApplicationReason: String, CaseIterable, Identifiable {
     case expiredPassport = "Expired Passport"
     case exhaustedPages = "Exhausted Pages"
     case lostPassport = "Lost Passport"
     case pendingApplication = "pending Application"
-    
+    case neverHeldAPassport = "neverHeldAPassport"
+    case damaged = "damaged"
     var reason: String {
         switch self {
         case .expiredPassport:
@@ -41,6 +39,10 @@ enum ApplicationReason: String, CaseIterable, Identifiable {
             return  "Lost"
         case .pendingApplication:
             return  "pending"
+        case .neverHeldAPassport:
+            return  "neverHeldAPassport"
+        case .damaged:
+            return "damaged"
         }
     }
     var id: String { self.rawValue }
@@ -68,15 +70,15 @@ struct ApplicationReasonView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(height: UIScreen.main.bounds.height * 0.2) // fixed 20% header height
 
-                        VStack {
-                            Text(currentTimeString)
-                                .font(.system(size: 36, weight: .bold))
-                                .foregroundColor(.white)
-
-                            Text(Date().toCustomString())
-                                .font(.subheadline.weight(.regular))
-                                .foregroundColor(.white)
-                        }
+                VStack {
+                    Text(Date().toTimeString())
+                        .font(.system(size: 36, weight: .bold))
+                        .foregroundColor(.white)
+                    
+                    Text(Date().toCustomString())
+                        .font(.subheadline.weight(.regular))
+                        .foregroundColor(.white)
+                }
                     }
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
@@ -97,66 +99,73 @@ struct ApplicationReasonView: View {
                     .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
                     .padding(.horizontal)
                     topPickerView
-                    agePickerView
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(12)
-                        .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
-                    if   viewModel.enrollmentMethod != .none {
-                        VStack {
-                            selectedFields
-                            Button(action: {
-                                if  viewModel.selectedReason == .lostPassport {
-                                    
-                                }else {
-                                    viewModel.checkEligibility()
-                                }
-                            }) {
-                                Text("CHECK ELIGIBILITY")
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.accentColor)
-                                    .cornerRadius(8)
-                            }
-                            Spacer()
-                        }
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(12)
-                        .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
-                        .padding(.vertical)
-                        .sheet(isPresented: $showDatePicker) {
+                    if   viewModel.enrollmentMethod ==  .selfEnrollment {
+                        agePickerView
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(12)
+                            .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
+                        middlePickerView
+                            .background(Color.white)
+                            .cornerRadius(12)
+                            .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
+                        if   viewModel.enrollmentMethod != .none {
                             VStack {
-                                HStack {
-                                    Spacer()
-                                    Button(action: {
-                                        showDatePicker = false
-                                    }) {
-                                        Text("Done")
-                                            .fontWeight(.bold)
+                                selectedFields
+                                Button(action: {
+                                    if  viewModel.selectedReason == .lostPassport {
+                                        
+                                    }else {
+                                        viewModel.checkEligibility()
                                     }
-                                    .padding()
+                                }) {
+                                    Text("CHECK ELIGIBILITY")
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.accentColor)
+                                        .cornerRadius(8)
                                 }
-                                
-                                DatePicker(
-                                    "Select Date of Birth",
-                                    selection: $selectedDate,
-                                    displayedComponents: .date
-                                )
-                                .datePickerStyle(WheelDatePickerStyle())
-                                .labelsHidden()
-                                .padding()
-                                .onChange(of: selectedDate) { newValue in
-                                    let formatter = DateFormatter()
-                                    formatter.dateFormat = "yyyy-MM-dd"
-                                    dateOfBirth = formatter.string(from: newValue)
-                                    viewModel.birthDate =  formatter.string(from: newValue)
-                                }
-                                
                                 Spacer()
                             }
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(12)
+                            .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 3)
+                            .padding(.vertical)
                             
+                            .sheet(isPresented: $showDatePicker) {
+                                VStack {
+                                    HStack {
+                                        Spacer()
+                                        Button(action: {
+                                            showDatePicker = false
+                                        }) {
+                                            Text("Done")
+                                                .fontWeight(.bold)
+                                        }
+                                        .padding()
+                                    }
+                                    
+                                    DatePicker(
+                                        "Select Date of Birth",
+                                        selection: $selectedDate,
+                                        displayedComponents: .date
+                                    )
+                                    .datePickerStyle(WheelDatePickerStyle())
+                                    .labelsHidden()
+                                    .padding()
+                                    .onChange(of: selectedDate) { newValue in
+                                        let formatter = DateFormatter()
+                                        formatter.dateFormat = "yyyy-MM-dd"
+                                        dateOfBirth = formatter.string(from: newValue)
+                                        viewModel.birthDate =  formatter.string(from: newValue)
+                                    }
+                                    
+                                    Spacer()
+                                }
+                                
+                            }
                         }
                     }
                 }
@@ -172,6 +181,271 @@ struct ApplicationReasonView_Previews: PreviewProvider {
     }
 }
 
+//First State
+extension ApplicationReasonView {
+    var topPickerView :some View {
+        VStack(alignment: .leading){
+            HStack(spacing:5) {
+                Button(action: {
+                    withAnimation {
+                        viewModel.enrollmentMethod = .selfEnrollment
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.enrollmentMethod ==  .selfEnrollment ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Self Enrollment..")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                        
+                    }
+                    .padding(8)
+                }
+                Spacer()
+                Button(action: {
+                    withAnimation {
+                        viewModel.enrollmentMethod = .embassyAssisted
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.enrollmentMethod == .embassyAssisted ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Embassy Asisted")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                        
+                    }
+                }
+                
+            }
+            HStack{
+                Button(action: {
+                    withAnimation {
+                        viewModel.enrollmentMethod = .pendingApproval
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.enrollmentMethod == .pendingApproval ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Pending Application")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                    }
+                    
+                }
+                .padding(8)
+                
+                Spacer()
+                Button(action: {
+                    withAnimation {
+                        viewModel.enrollmentMethod = .requestedReprint
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.enrollmentMethod == .requestedReprint ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Request Reprint")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                    }
+                    
+                }
+                .padding(8)
+            }
+        }
+        .padding()
+      
+     }
+}
+
+//Note: Second satae
+extension ApplicationReasonView {
+    var middlePickerView :some View {
+        VStack(alignment: .leading){
+            HStack(spacing:5) {
+                Button(action: {
+                    withAnimation {
+                        viewModel.selectedReason = .expiredPassport
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.selectedReason ==  .expiredPassport ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Expired Passport")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.black)
+                        
+                    }
+                    .padding(8)
+                }
+                Spacer()
+                Button(action: {
+                    withAnimation {
+                        viewModel.selectedReason = .exhaustedPages
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.selectedReason == .exhaustedPages ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Exhausted Passport")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.black)
+                        
+                    }
+                }
+               
+            }
+            HStack{
+                Button(action: {
+                    withAnimation {
+                        viewModel.selectedReason = .damaged
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.selectedReason == .damaged ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Damaged Passport")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.black)
+                    }
+                    
+                }
+                .padding(8)
+                
+             
+            }
+            
+            HStack{
+                Button(action: {
+                    withAnimation {
+                        viewModel.selectedReason = .lostPassport
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.selectedReason == .lostPassport ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Lost Passport")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.black)
+                    }
+                    
+                }
+                .padding(8)
+                
+                Button(action: {
+                    withAnimation {
+                        viewModel.selectedReason = .neverHeldAPassport
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.selectedReason == .neverHeldAPassport ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(.accentColor)
+                        Text("Never Had a Passport")
+                            .fixedSize(horizontal: true, vertical: true)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.black)
+                    }
+                    
+                }
+                .padding(8)
+             
+            }
+            if  viewModel.selectedReason  == .lostPassport {
+                HStack {
+                    Image(systemName: availablePassport == true ? "checkmark.square.fill" : "square")
+                        .foregroundColor(availablePassport == true ? .green : .gray)
+                    Text("I know My Passport Number")
+                        .font(.system(size: 16, weight: .regular))
+                }
+                .padding(8)
+                .onTapGesture {
+                    availablePassport.toggle()
+                    
+                }
+            }
+        }
+        .padding()
+      
+     }
+}
+//note: Second Selection
+extension ApplicationReasonView {
+      var agePickerView :some View {
+          VStack(alignment: .leading){
+              
+              HStack(spacing:5) {
+                  Button(action: {
+                      withAnimation {
+                          viewModel.ageGroup = .adult
+                      }
+                  }) {
+                      HStack {
+                          Image(systemName: viewModel.ageGroup == .adult ? "largecircle.fill.circle" : "circle")
+                              .foregroundColor(.accentColor)
+                          Text("Adult (above 17yrs)")
+                              .font(.system(size: 16, weight: .regular))
+                              .fixedSize(horizontal: true, vertical: true)
+                              .font(.subheadline)
+                              .foregroundColor(.black)
+                      }
+                      .padding(8)
+                  }
+                  Spacer()
+                  Button(action: {
+                      withAnimation {
+                          viewModel.ageGroup = .minor6to17
+                      }
+                  }) {
+                      HStack {
+                          Image(systemName: viewModel.ageGroup == .minor6to17 ? "largecircle.fill.circle" : "circle")
+                              .foregroundColor(.accentColor)
+                          Text("Minor (6 – 17yrs)")
+                              .fixedSize(horizontal: true, vertical: true)
+                              .font(.system(size: 16, weight: .regular))
+                              .foregroundColor(.black)
+                          
+                      }
+                  }
+                  
+              }
+              
+              HStack(spacing:5) {
+                  
+                  Button(action: {
+                      withAnimation {
+                          viewModel.ageGroup = .minor0to5
+                      }
+                  }) {
+                      HStack {
+                          Image(systemName:  viewModel.ageGroup  == .minor0to5 ? "largecircle.fill.circle" : "circle")
+                              .foregroundColor(.accentColor)
+                          Text("Minor (0 – 5yrs)")
+                              .font(.system(size: 16, weight: .regular))
+                              .foregroundColor(.black)
+                      }
+                      .padding(8)
+                  }
+                  
+                  
+               
+                  
+              }
+             
+          }
+      }
+      
+}
+
+
+//note: Last Selection
 extension ApplicationReasonView {
     var selectedFields: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -194,164 +468,16 @@ extension ApplicationReasonView {
                 
             case .pendingApplication:
                 currentPassport
+            case .neverHeldAPassport:
+                EmptyView()
+            case .damaged:
+                EmptyView()
             }
             
         }
       
     }
-    
-   var topPickerView :some View {
-       VStack(alignment: .leading){
-           HStack(spacing:5) {
-               Button(action: {
-                   withAnimation {
-                       viewModel.enrollmentMethod = .selfEnrollment
-                   }
-               }) {
-                   HStack {
-                       Image(systemName: viewModel.enrollmentMethod ==  .selfEnrollment ? "largecircle.fill.circle" : "circle")
-                           .foregroundColor(.accentColor)
-                       Text("Self Enrollment..")
-                           .fixedSize(horizontal: true, vertical: true)
-                           .font(.subheadline)
-                           .foregroundColor(.black)
-                       
-                   }
-                   .padding(8)
-               }
-               Spacer()
-               Button(action: {
-                   withAnimation {
-                       viewModel.enrollmentMethod = .embassyAssisted
-                   }
-               }) {
-                   HStack {
-                       Image(systemName: viewModel.enrollmentMethod == .embassyAssisted ? "largecircle.fill.circle" : "circle")
-                           .foregroundColor(.accentColor)
-                       Text("Embassy Asisted...")
-                           .fixedSize(horizontal: true, vertical: true)
-                           .font(.subheadline)
-                           .foregroundColor(.black)
-                       
-                   }
-               }
-               
-           }
-           HStack{
-               Button(action: {
-                   withAnimation {
-                       viewModel.enrollmentMethod = .pendingApproval
-                   }
-               }) {
-                   HStack {
-                       Image(systemName: viewModel.enrollmentMethod == .pendingApproval ? "largecircle.fill.circle" : "circle")
-                           .foregroundColor(.accentColor)
-                       Text("Pending Application")
-                           .fixedSize(horizontal: true, vertical: true)
-                           .font(.subheadline)
-                           .foregroundColor(.black)
-                   }
-                   
-               }
-               .padding(8)
-               
-               
-               Button(action: {
-                   withAnimation {
-                       viewModel.enrollmentMethod = .requestedReprint
-                   }
-               }) {
-                   HStack {
-                       Image(systemName: viewModel.enrollmentMethod == .requestedReprint ? "largecircle.fill.circle" : "circle")
-                           .foregroundColor(.accentColor)
-                       Text("Request Reprint")
-                           .fixedSize(horizontal: true, vertical: true)
-                           .font(.subheadline)
-                           .foregroundColor(.black)
-                   }
-                   
-               }
-               .padding(8)
-               Spacer()
-           }
-       }
-       .padding()
-     
-    }
-    var agePickerView :some View {
-        VStack(alignment: .leading){
-            
-            HStack(spacing:5) {
-                Button(action: {
-                    withAnimation {
-                        viewModel.ageGroup = .adult
-                    }
-                }) {
-                    HStack {
-                        Image(systemName: viewModel.ageGroup == .adult ? "largecircle.fill.circle" : "circle")
-                            .foregroundColor(.accentColor)
-                        Text("Adult (above 17yrs)")
-                            .fixedSize(horizontal: true, vertical: true)
-                            .font(.subheadline)
-                            .foregroundColor(.black)
-                    }
-                    .padding(8)
-                }
-                Spacer()
-                Button(action: {
-                    withAnimation {
-                        viewModel.ageGroup = .minor6to17
-                    }
-                }) {
-                    HStack {
-                        Image(systemName: viewModel.ageGroup == .minor6to17 ? "largecircle.fill.circle" : "circle")
-                            .foregroundColor(.accentColor)
-                        Text("Minor (6 – 17yrs)")
-                            .fixedSize(horizontal: true, vertical: true)
-                            .font(.subheadline)
-                            .foregroundColor(.black)
-                        
-                    }
-                }
-                
-            }
-            
-            HStack(spacing:5) {
-                
-                Button(action: {
-                    withAnimation {
-                        viewModel.ageGroup = .minor0to5
-                    }
-                }) {
-                    HStack {
-                        Image(systemName:  viewModel.ageGroup  == .minor0to5 ? "largecircle.fill.circle" : "circle")
-                            .foregroundColor(.accentColor)
-                        Text("Minor (0 – 5yrs)")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
-                    }
-                    .padding(8)
-                }
-                
-                
-             
-                
-            }
-            if  viewModel.selectedReason  == .lostPassport {
-                HStack {
-                    Image(systemName: availablePassport == true ? "checkmark.square.fill" : "square")
-                        .foregroundColor(availablePassport == true ? .green : .gray)
-                    Text("If you do not have a profile, please enter your ticket number.")
-                        .font(.subheadline)
-                }
-                .padding(.horizontal)
-                .onTapGesture {
-                    availablePassport.toggle()
-                    
-                }
-            }
-        }
-    }
+  
     var currentPassport:some View {
         VStack(alignment: .leading){
             VStack(alignment: .leading,spacing: 10){
@@ -483,10 +609,6 @@ extension ApplicationReasonView {
     
 
 }
-
-
-
-
 
 
 extension Date {
@@ -638,22 +760,6 @@ struct TextFieldWithBottomLine: View {
         .padding(.bottom, padding)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

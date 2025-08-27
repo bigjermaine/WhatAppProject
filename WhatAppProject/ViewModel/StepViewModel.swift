@@ -17,7 +17,7 @@ class StepViewModel:ObservableObject {
     @Published var ageGroup:AgeGroup = .adult
     @Published  var enrollmentMethod: EnrollmentMethod = .none
     private let supportTicketService: SupportTicketRequestProtocol =  SupportTicketService()
-    
+    @Published var applicationReason: ApplicationReason = .expiredPassport
     func checkEligibility(){
         Task{
             do {
