@@ -38,7 +38,8 @@ class LeaveGroupChatontroller: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "Would you like to create a new group or to add a new chat?"
+        label.text = "Leaving this group is permanent and cannot be reversed "
+        label.font = .systemFont(ofSize: 14, weight: .bold)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -48,8 +49,8 @@ class LeaveGroupChatontroller: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "Add new"
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.text = "Are you sure you want to leave group?"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -106,13 +107,6 @@ class LeaveGroupChatontroller: UIViewController {
             handleView.widthAnchor.constraint(equalToConstant: 120),
             handleView.heightAnchor.constraint(equalToConstant: 6)
         ])
-        containerView.addSubview(addLabel)
-        NSLayoutConstraint.activate([
-            addLabel.topAnchor.constraint(equalTo: handleView.bottomAnchor, constant: 15),
-            addLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,constant: 10),
-            addLabel.widthAnchor.constraint(equalToConstant: 120),
-           
-        ])
         containerView.addSubview(closeButton)
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: handleView.bottomAnchor, constant: 15),
@@ -121,6 +115,14 @@ class LeaveGroupChatontroller: UIViewController {
             closeButton.heightAnchor.constraint(equalToConstant: 30)
            
         ])
+        containerView.addSubview(addLabel)
+        NSLayoutConstraint.activate([
+            addLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor, constant: 0),
+            addLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,constant: 10),
+         
+           
+        ])
+        
         
         containerView.addSubview(borderLine)
         NSLayoutConstraint.activate([
@@ -142,10 +144,10 @@ class LeaveGroupChatontroller: UIViewController {
     }
     
     private func setupButtons() {
-        firstButton.setTitle("New group", for: .normal)
+        firstButton.setTitle("Cancel", for: .normal)
         firstButton.addTarget(self, action: #selector(firstButtonTapped), for: .touchUpInside)
         
-        secondButton.setTitle("New chat", for: .normal)
+        secondButton.setTitle("Leave", for: .normal)
         secondButton.addTarget(self, action: #selector(secondButtonTapped), for: .touchUpInside)
         
         let stack = UIStackView(arrangedSubviews: [firstButton, secondButton])
