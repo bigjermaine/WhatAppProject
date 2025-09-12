@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-enum StateUploadCheckIn{
+enum StateUploadCheckIn {
     case selected
     case success
     case failed
