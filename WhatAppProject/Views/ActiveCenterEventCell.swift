@@ -134,5 +134,5 @@ struct ActiveCenterEventCell: View {
 }
 
 #Preview {
-    EventCell()
+    ActiveCenterEventCell()
 }

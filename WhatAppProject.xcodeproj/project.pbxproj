@@ -30,6 +30,7 @@
 		D0A181A32DCA25B3008D8675 /* GatewayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181A22DCA25B3008D8675 /* GatewayResponse.swift */; };
 		D0A181CD2DCA3390008D8675 /* PaymentLinkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */; };
 		D0A181CF2DCA406E008D8675 /* PaymentWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */; };
+		D0BBD2B42E8D85E900EA9877 /* ServiceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */; };
 		D0E909052DAEC51D004DAF3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FB2DAEC51D004DAF3B /* Preview Assets.xcassets */; };
 		D0E909062DAEC51D004DAF3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FD2DAEC51D004DAF3B /* Assets.xcassets */; };
 		D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */; };
@@ -98,6 +99,7 @@
 		D0A181A22DCA25B3008D8675 /* GatewayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayResponse.swift; sourceTree = "<group>"; };
 		D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLinkResponse.swift; sourceTree = "<group>"; };
 		D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWebView.swift; sourceTree = "<group>"; };
+		D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCategory.swift; sourceTree = "<group>"; };
 		D0E908AC2DAEBB2B004DAF3B /* WhatAppProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatAppProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908BD2DAEBB2E004DAF3B /* WhatAppProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908C72DAEBB2E004DAF3B /* WhatAppProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 		D04BBEF32E59E04B0010A320 /* Gopaddi */ = {
 			isa = PBXGroup;
 			children = (
+				D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */,
 				D04BBEF12E59DFF60010A320 /* Test.swift */,
 				D074F1B12E6C1E6B003C94EC /* LeaveGroupChat.swift */,
 				D09765522E5C5B4B00A0A9A2 /* addUserBottomSheet.swift */,
@@ -480,6 +483,7 @@
 				D0FEB2D42E01F09500442430 /* SelectHotelRoomCell.swift in Sources */,
 				D074F16F2E6B6B3F003C94EC /* FirebaseAI.swift in Sources */,
 				D0E9090C2DAEC51D004DAF3B /* BubbleModifier.swift in Sources */,
+				D0BBD2B42E8D85E900EA9877 /* ServiceCategory.swift in Sources */,
 				D04BBEF22E59DFF60010A320 /* Test.swift in Sources */,
 				D0E9090D2DAEC51D004DAF3B /* MessageItem.swift in Sources */,
 				D06CFCED2DF40F8200134CBA /* Document.swift in Sources */,
