@@ -19,6 +19,7 @@
 		D074F16F2E6B6B3F003C94EC /* FirebaseAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074F16E2E6B6B3F003C94EC /* FirebaseAI.swift */; };
 		D074F1712E6B6B58003C94EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D074F1702E6B6B58003C94EC /* GoogleService-Info.plist */; };
 		D074F1B22E6C1E6B003C94EC /* LeaveGroupChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074F1B12E6C1E6B003C94EC /* LeaveGroupChat.swift */; };
+		D096F8C92E8FCE67005110B1 /* PaymentDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D096F8C82E8FCE67005110B1 /* PaymentDetailsScreen.swift */; };
 		D09765532E5C5B4B00A0A9A2 /* addUserBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09765522E5C5B4B00A0A9A2 /* addUserBottomSheet.swift */; };
 		D09765552E5C95B300A0A9A2 /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09765542E5C95B300A0A9A2 /* CreateGroupView.swift */; };
 		D097655A2E5C9AA100A0A9A2 /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09765592E5C9AA100A0A9A2 /* func.swift */; };
@@ -50,6 +51,11 @@
 		D0E909E92DB169F6004DAF3B /* MediaAttachmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */; };
 		D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */; };
 		D0F1E4752E6EF92600FA4329 /* DocumentUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F1E4742E6EF92600FA4329 /* DocumentUploadView.swift */; };
+		D0FB7E1E2E8E83CA001D121C /* FabricItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB7E1D2E8E83CA001D121C /* FabricItem.swift */; };
+		D0FB7E202E8E86E2001D121C /* FabricInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB7E1F2E8E86E2001D121C /* FabricInstructionsView.swift */; };
+		D0FB7E222E8E8E03001D121C /* FabricRequestConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB7E212E8E8E03001D121C /* FabricRequestConfirmationView.swift */; };
+		D0FB7E262E8E91C1001D121C /* FabricRequestFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB7E252E8E91C1001D121C /* FabricRequestFeedbackView.swift */; };
+		D0FB7E282E8E9B8F001D121C /* OrderStatusBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB7E272E8E9B8F001D121C /* OrderStatusBottomSheetView.swift */; };
 		D0FEB2D22E01E0E800442430 /* MarketPlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */; };
 		D0FEB2D42E01F09500442430 /* SelectHotelRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */; };
 		D0FEB2D72E026B9100442430 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D0FEB2D62E026B9100442430 /* SDWebImage */; };
@@ -88,6 +94,7 @@
 		D074F16E2E6B6B3F003C94EC /* FirebaseAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAI.swift; sourceTree = "<group>"; };
 		D074F1702E6B6B58003C94EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D074F1B12E6C1E6B003C94EC /* LeaveGroupChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveGroupChat.swift; sourceTree = "<group>"; };
+		D096F8C82E8FCE67005110B1 /* PaymentDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsScreen.swift; sourceTree = "<group>"; };
 		D09765522E5C5B4B00A0A9A2 /* addUserBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addUserBottomSheet.swift; sourceTree = "<group>"; };
 		D09765542E5C95B300A0A9A2 /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
 		D09765592E5C9AA100A0A9A2 /* func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = func.swift; sourceTree = "<group>"; };
@@ -123,6 +130,11 @@
 		D0E909E82DB169F6004DAF3B /* MediaAttachmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAttachmentPreview.swift; sourceTree = "<group>"; };
 		D0E909EA2DB28E24004DAF3B /* MediaImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaImageModel.swift; sourceTree = "<group>"; };
 		D0F1E4742E6EF92600FA4329 /* DocumentUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentUploadView.swift; sourceTree = "<group>"; };
+		D0FB7E1D2E8E83CA001D121C /* FabricItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabricItem.swift; sourceTree = "<group>"; };
+		D0FB7E1F2E8E86E2001D121C /* FabricInstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabricInstructionsView.swift; sourceTree = "<group>"; };
+		D0FB7E212E8E8E03001D121C /* FabricRequestConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabricRequestConfirmationView.swift; sourceTree = "<group>"; };
+		D0FB7E252E8E91C1001D121C /* FabricRequestFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabricRequestFeedbackView.swift; sourceTree = "<group>"; };
+		D0FB7E272E8E9B8F001D121C /* OrderStatusBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusBottomSheetView.swift; sourceTree = "<group>"; };
 		D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceImageCell.swift; sourceTree = "<group>"; };
 		D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHotelRoomCell.swift; sourceTree = "<group>"; };
 		D0FEB2DA2E026BC500442430 /* MarketPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaces.swift; sourceTree = "<group>"; };
@@ -176,6 +188,12 @@
 			isa = PBXGroup;
 			children = (
 				D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */,
+				D0FB7E1D2E8E83CA001D121C /* FabricItem.swift */,
+				D0FB7E1F2E8E86E2001D121C /* FabricInstructionsView.swift */,
+				D0FB7E252E8E91C1001D121C /* FabricRequestFeedbackView.swift */,
+				D0FB7E212E8E8E03001D121C /* FabricRequestConfirmationView.swift */,
+				D0FB7E272E8E9B8F001D121C /* OrderStatusBottomSheetView.swift */,
+				D096F8C82E8FCE67005110B1 /* PaymentDetailsScreen.swift */,
 				D04BBEF12E59DFF60010A320 /* Test.swift */,
 				D074F1B12E6C1E6B003C94EC /* LeaveGroupChat.swift */,
 				D09765522E5C5B4B00A0A9A2 /* addUserBottomSheet.swift */,
@@ -464,6 +482,7 @@
 				D09765552E5C95B300A0A9A2 /* CreateGroupView.swift in Sources */,
 				D0A181A32DCA25B3008D8675 /* GatewayResponse.swift in Sources */,
 				D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */,
+				D0FB7E202E8E86E2001D121C /* FabricInstructionsView.swift in Sources */,
 				D00407DB2DE741840098E654 /* StepView.swift in Sources */,
 				D0E909082DAEC51D004DAF3B /* BubbleImageView.swift in Sources */,
 				D0A181512DCA1F0F008D8675 /* PassportPaymentView.swift in Sources */,
@@ -475,6 +494,7 @@
 				D01BBB782DF05CE500D44366 /* StepPaymentInstruction.swift in Sources */,
 				D0E909EB2DB28E24004DAF3B /* MediaImageModel.swift in Sources */,
 				D097655A2E5C9AA100A0A9A2 /* func.swift in Sources */,
+				D0FB7E1E2E8E83CA001D121C /* FabricItem.swift in Sources */,
 				D0E9090A2DAEC51D004DAF3B /* BubbleTextView.swift in Sources */,
 				D0FEB2DB2E026BC500442430 /* MarketPlaces.swift in Sources */,
 				D0E9090B2DAEC51D004DAF3B /* TextInputArea.swift in Sources */,
@@ -491,16 +511,20 @@
 				D0A181012DC91700008D8675 /* BookingDetailsView.swift in Sources */,
 				D0A181CD2DCA3390008D8675 /* PaymentLinkResponse.swift in Sources */,
 				D0A180D72DC8D8AE008D8675 /* SupportTicketRequestProtocol.swift in Sources */,
+				D096F8C92E8FCE67005110B1 /* PaymentDetailsScreen.swift in Sources */,
 				D0A180D42DC8D87C008D8675 /* SupportTicket.swift in Sources */,
 				D0F1E4752E6EF92600FA4329 /* DocumentUploadView.swift in Sources */,
 				D09765532E5C5B4B00A0A9A2 /* addUserBottomSheet.swift in Sources */,
 				D0E9090E2DAEC51D004DAF3B /* ChatRoomScreen.swift in Sources */,
 				D004080C2DE75F7E0098E654 /* StepViewModel.swift in Sources */,
 				D0E9090F2DAEC51D004DAF3B /* ContentView.swift in Sources */,
+				D0FB7E222E8E8E03001D121C /* FabricRequestConfirmationView.swift in Sources */,
 				D0A180D92DC8E51C008D8675 /* SendMessageResponse.swift in Sources */,
 				D0E9091D2DAEEE6E004DAF3B /* Extension.swift in Sources */,
+				D0FB7E262E8E91C1001D121C /* FabricRequestFeedbackView.swift in Sources */,
 				D0E909102DAEC51D004DAF3B /* MessageListControllerViewController.swift in Sources */,
 				D00407DD2DE758030098E654 /* ApplicationReason.swift in Sources */,
+				D0FB7E282E8E9B8F001D121C /* OrderStatusBottomSheetView.swift in Sources */,
 				D0E909152DAEC530004DAF3B /* ChatViewModel.swift in Sources */,
 				D0E909112DAEC51D004DAF3B /* MessageListView.swift in Sources */,
 				D0E909122DAEC51D004DAF3B /* WhatAppProjectApp.swift in Sources */,

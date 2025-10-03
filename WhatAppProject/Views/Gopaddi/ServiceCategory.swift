@@ -18,12 +18,12 @@ struct HousekeepingView: View {
     @Environment(\.dismiss) var dismiss
     
     let categories: [ServiceCategory] = [
-        ServiceCategory(title: "Room cleaning", systemImage: "bed.double"),
-        ServiceCategory(title: "Fabrics", systemImage: "tshirt"),
-        ServiceCategory(title: "Toiletries", systemImage: "shower"),
-        ServiceCategory(title: "Report issue", systemImage: "exclamationmark.bubble"),
-        ServiceCategory(title: "Furnishings", systemImage: "lamp.table"),
-        ServiceCategory(title: "Guest help", systemImage: "person.2.questionmark")
+        ServiceCategory(title: "Room cleaning", systemImage: "roomCleaningIcon"),
+        ServiceCategory(title: "Fabrics", systemImage: "fabricsIcon"),
+        ServiceCategory(title: "Toiletries", systemImage: "toiletriesIcon"),
+        ServiceCategory(title: "Report issue", systemImage: "reportIssueIcon"),
+        ServiceCategory(title: "Furnishings", systemImage: "furnishingIcon"),
+        ServiceCategory(title: "Guest help", systemImage: "guestHelpIcon")
     ]
     
     let roomNumber = "312"
@@ -34,13 +34,13 @@ struct HousekeepingView: View {
                 
                 // Top message
                 Text("Thank you! **Room \(roomNumber)** confirmed. How can we assist you with housekeeping service today?")
-                    .font(.body)
-                    .foregroundColor(.primary)
+                    .font(Font(UIFont.satoshi( weight: .regular, size: 16)))
+                    .foregroundColor(.black)
                     .padding(.top, 10)
                 
                 Text("Please select a service category below")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .font(Font(UIFont.satoshi( weight: .regular, size: 12)))
+                    .foregroundColor(.black)
                 
                 // Grid of categories
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
@@ -48,35 +48,46 @@ struct HousekeepingView: View {
                         NavigationLink {
                             ServiceDetailView(service: category)
                         } label: {
-                            VStack(spacing: 8) {
-                                Image(systemName: category.systemImage)
-                                    .font(.system(size: 28))
-                                    .foregroundColor(.blue)
+                            VStack(spacing: 16) {
+                                Image(category.systemImage)
+                                    .font(.system(size: 36, weight: .regular))
+                                    .foregroundColor(Color(red: 49/255, green: 119/255, blue: 204/255)) // blue accent
+                                    .padding(.top, 8)
                                 
                                 Text(category.title)
-                                    .font(.body)
-                                    .foregroundColor(.primary)
+                                    .font(Font(UIFont.satoshi( weight: .regular, size: 14)))
+                                    .foregroundColor(.black)
                                     .multilineTextAlignment(.center)
+                                    .padding(.bottom, 8)
                             }
                             .frame(maxWidth: .infinity, minHeight: 90)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
+                            .background(Color.white)
+                            .cornerRadius(16)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color(red: 230/255, green: 238/255, blue: 250/255), lineWidth: 1.2)
+                            )
+                           
                         }
                     }
                 }
-                .padding(.top, 8)
+                .padding(10)
+                .background(Color.white)
+                .cornerRadius(18)
+                .padding(.vertical, 6)
                 
                
                 
                 // Timestamp
                 Text("03:50 AM")
-                    .font(.caption2)
+                    .font(Font(UIFont.satoshi( weight: .regular, size: 14)))
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Spacer()
             }
             .padding()
             .navigationBarBackButtonHidden(true)
+            .background(Color(red: 240/255, green: 246/255, blue: 255/255))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -110,3 +121,4 @@ struct ServiceDetailView: View {
 #Preview {
     HousekeepingView()
 }
+
