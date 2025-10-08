@@ -94,8 +94,9 @@ struct FabricRequestConfirmationView: View {
                         .background(Color(red: 248/255, green: 251/255, blue: 255/255))
                         .cornerRadius(8)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color(red: 0.18, green: 0.54, blue: 1.0, opacity: 0.28), lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.gray)
+                            
                         )
                 }
                 .padding(.horizontal, 16)
@@ -120,6 +121,7 @@ struct FabricRequestConfirmationView: View {
                     Text("Continue")
                         .frame(maxWidth: .infinity)
                         .padding()
+                        .padding(.horizontal)
                         .foregroundColor(.white)
                         .background(Color.blue)
                         .cornerRadius(8)
@@ -137,7 +139,7 @@ struct FabricRequestConfirmationView: View {
                     .init(title: "In progress", icon: "gearshape.fill"),
                     .init(title: "Complete", icon: "checkmark.circle.fill"),
                     .init(title: "Complete", icon: "checkmark.circle.fill"),
-                    .init(title: "Complete", icon: "checkmark.circle.fill")
+                
                 ]
             )
             .padding(.horizontal, 2)

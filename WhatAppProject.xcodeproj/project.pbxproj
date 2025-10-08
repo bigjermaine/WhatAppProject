@@ -32,6 +32,7 @@
 		D0A181CD2DCA3390008D8675 /* PaymentLinkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */; };
 		D0A181CF2DCA406E008D8675 /* PaymentWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */; };
 		D0BBD2B42E8D85E900EA9877 /* ServiceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */; };
+		D0CEC8E62E963152008332E3 /* PhotoValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CEC8E52E963152008332E3 /* PhotoValidationResult.swift */; };
 		D0E909052DAEC51D004DAF3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FB2DAEC51D004DAF3B /* Preview Assets.xcassets */; };
 		D0E909062DAEC51D004DAF3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FD2DAEC51D004DAF3B /* Assets.xcassets */; };
 		D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */; };
@@ -107,6 +108,7 @@
 		D0A181CC2DCA3390008D8675 /* PaymentLinkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLinkResponse.swift; sourceTree = "<group>"; };
 		D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWebView.swift; sourceTree = "<group>"; };
 		D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCategory.swift; sourceTree = "<group>"; };
+		D0CEC8E52E963152008332E3 /* PhotoValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoValidationResult.swift; sourceTree = "<group>"; };
 		D0E908AC2DAEBB2B004DAF3B /* WhatAppProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatAppProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908BD2DAEBB2E004DAF3B /* WhatAppProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908C72DAEBB2E004DAF3B /* WhatAppProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +194,7 @@
 				D0FB7E1F2E8E86E2001D121C /* FabricInstructionsView.swift */,
 				D0FB7E252E8E91C1001D121C /* FabricRequestFeedbackView.swift */,
 				D0FB7E212E8E8E03001D121C /* FabricRequestConfirmationView.swift */,
+				D0CEC8E52E963152008332E3 /* PhotoValidationResult.swift */,
 				D0FB7E272E8E9B8F001D121C /* OrderStatusBottomSheetView.swift */,
 				D096F8C82E8FCE67005110B1 /* PaymentDetailsScreen.swift */,
 				D04BBEF12E59DFF60010A320 /* Test.swift */,
@@ -523,6 +526,7 @@
 				D0E9091D2DAEEE6E004DAF3B /* Extension.swift in Sources */,
 				D0FB7E262E8E91C1001D121C /* FabricRequestFeedbackView.swift in Sources */,
 				D0E909102DAEC51D004DAF3B /* MessageListControllerViewController.swift in Sources */,
+				D0CEC8E62E963152008332E3 /* PhotoValidationResult.swift in Sources */,
 				D00407DD2DE758030098E654 /* ApplicationReason.swift in Sources */,
 				D0FB7E282E8E9B8F001D121C /* OrderStatusBottomSheetView.swift in Sources */,
 				D0E909152DAEC530004DAF3B /* ChatViewModel.swift in Sources */,

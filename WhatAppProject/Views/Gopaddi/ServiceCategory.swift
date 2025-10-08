@@ -29,7 +29,6 @@ struct HousekeepingView: View {
     let roomNumber = "312"
     
     var body: some View {
-        NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
                 
                 // Top message
@@ -100,7 +99,7 @@ struct HousekeepingView: View {
             }
         }
     }
-}
+
 
 // Mock detail screen
 struct ServiceDetailView: View {
