@@ -33,6 +33,8 @@
 		D0A181CF2DCA406E008D8675 /* PaymentWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */; };
 		D0BBD2B42E8D85E900EA9877 /* ServiceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */; };
 		D0CEC8E62E963152008332E3 /* PhotoValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CEC8E52E963152008332E3 /* PhotoValidationResult.swift */; };
+		D0CEC9472E97F7D5008332E3 /* PassportImageUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CEC9462E97F7D5008332E3 /* PassportImageUploadView.swift */; };
+		D0CEC9492E97FF20008332E3 /* PassportImageUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CEC9482E97FF20008332E3 /* PassportImageUploadViewModel.swift */; };
 		D0E909052DAEC51D004DAF3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FB2DAEC51D004DAF3B /* Preview Assets.xcassets */; };
 		D0E909062DAEC51D004DAF3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E908FD2DAEC51D004DAF3B /* Assets.xcassets */; };
 		D0E909072DAEC51D004DAF3B /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E908F12DAEC51D004DAF3B /* BubbleAudioView.swift */; };
@@ -109,6 +111,8 @@
 		D0A181CE2DCA406E008D8675 /* PaymentWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWebView.swift; sourceTree = "<group>"; };
 		D0BBD2B32E8D85E900EA9877 /* ServiceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCategory.swift; sourceTree = "<group>"; };
 		D0CEC8E52E963152008332E3 /* PhotoValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoValidationResult.swift; sourceTree = "<group>"; };
+		D0CEC9462E97F7D5008332E3 /* PassportImageUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportImageUploadView.swift; sourceTree = "<group>"; };
+		D0CEC9482E97FF20008332E3 /* PassportImageUploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportImageUploadViewModel.swift; sourceTree = "<group>"; };
 		D0E908AC2DAEBB2B004DAF3B /* WhatAppProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatAppProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908BD2DAEBB2E004DAF3B /* WhatAppProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E908C72DAEBB2E004DAF3B /* WhatAppProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatAppProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,12 +180,14 @@
 				D00BE2A42E7C613500AE6D97 /* ActiveCenterEventCell.swift */,
 				D00407DA2DE741840098E654 /* StepView.swift */,
 				D0FEB2D12E01E0E800442430 /* MarketPlaceImageCell.swift */,
+				D0CEC9462E97F7D5008332E3 /* PassportImageUploadView.swift */,
 				D0FEB2D32E01F09500442430 /* SelectHotelRoomCell.swift */,
 				D0FEB2DC2E026C1F00442430 /* ViewControllerPreview.swift */,
 				D01BBB772DF05CE500D44366 /* StepPaymentInstruction.swift */,
 				D00407DC2DE758030098E654 /* ApplicationReason.swift */,
 				D0F1E4742E6EF92600FA4329 /* DocumentUploadView.swift */,
 				D04BBEF32E59E04B0010A320 /* Gopaddi */,
+				D0CEC9482E97FF20008332E3 /* PassportImageUploadViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 				D0E909082DAEC51D004DAF3B /* BubbleImageView.swift in Sources */,
 				D0A181512DCA1F0F008D8675 /* PassportPaymentView.swift in Sources */,
 				D0FEB2D22E01E0E800442430 /* MarketPlaceImageCell.swift in Sources */,
+				D0CEC9492E97FF20008332E3 /* PassportImageUploadViewModel.swift in Sources */,
 				D033D4652E706162004C32F9 /* CheckInView.swift in Sources */,
 				D0E909092DAEC51D004DAF3B /* BubbleTailView.swift in Sources */,
 				D0A181CF2DCA406E008D8675 /* PaymentWebView.swift in Sources */,
@@ -500,6 +507,7 @@
 				D0FB7E1E2E8E83CA001D121C /* FabricItem.swift in Sources */,
 				D0E9090A2DAEC51D004DAF3B /* BubbleTextView.swift in Sources */,
 				D0FEB2DB2E026BC500442430 /* MarketPlaces.swift in Sources */,
+				D0CEC9472E97F7D5008332E3 /* PassportImageUploadView.swift in Sources */,
 				D0E9090B2DAEC51D004DAF3B /* TextInputArea.swift in Sources */,
 				D00BE2A52E7C613500AE6D97 /* ActiveCenterEventCell.swift in Sources */,
 				D074F1B22E6C1E6B003C94EC /* LeaveGroupChat.swift in Sources */,
